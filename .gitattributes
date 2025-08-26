@@ -1,3 +1,2 @@
 images/vexbot/ACA-DGS-VexBotVid.mp4 filter=lfs diff=lfs merge=lfs -text
 images/vexbot/ACA-DGS-VexBotVidOld.mp4 filter=lfs diff=lfs merge=lfs -text
-*.mp4 filter=lfs diff=lfs merge=lfs -text
