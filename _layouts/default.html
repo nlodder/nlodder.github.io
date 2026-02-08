@@ -53,11 +53,33 @@
 
     // 2. Media Scroller Logic
     document.querySelectorAll('.media-scroller').forEach((scroller) => {
-      // Horizontal Scroll on Desktop
+      let isScrolling = false; // Prevents "hyper-scrolling"
+
       scroller.addEventListener('wheel', (evt) => {
         if (window.innerWidth > 768) {
           evt.preventDefault();
-          scroller.scrollLeft += evt.deltaY * 4;
+
+          // If we are already mid-animation, ignore new inputs
+          if (isScrolling) return;
+          const threshold = 40; // Adjust this number for sensitivity
+          const itemWidth = scroller.querySelector('.media-item').clientWidth + 20; // width + gap
+
+          if (Math.abs(evt.deltaY) > threshold) {
+            isScrolling = true;
+
+            // Determine direction: positive deltaY is scroll down (next), negative is up (prev)
+            const direction = evt.deltaY > 0 ? 1 : -1;
+
+            scroller.scrollBy({
+              left: itemWidth * direction,
+              behavior: 'smooth'
+            });
+
+            // Cooldown: wait for the smooth scroll to finish before allowing next move
+            setTimeout(() => {
+              isScrolling = false;
+            }, 500);
+          }
         }
       }, { passive: false });
 
