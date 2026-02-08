@@ -42,16 +42,16 @@ body {
 }
 
 .hero h1 .accent-text {
-    color: var(--accent-pink);
-    font-style: normal; /* Keep the dot standing straight */
-    margin-right: -5px;  /* Tuck it closer to the R */
+  color: var(--accent-pink);
+  font-style: normal; /* Keep the dot standing straight */
+  margin-right: -5px; /* Tuck it closer to the R */
 }
 
 .landing-container {
   display: flex;
   flex-direction: column; /* Changed from default row */
-  align-items: center; 
-  flex: 1; 
+  align-items: center;
+  flex: 1;
   padding: 20px;
   width: 100%; /* Ensure the container itself spans the screen */
 }
@@ -96,6 +96,10 @@ body {
   margin-bottom: 80px;
 }
 
+.project-media {
+  width: 100%;
+  overflow: hidden; /* Contains the scroller's peek effect */
+}
 .project-info {
   width: 100%;
 }
@@ -140,11 +144,35 @@ body {
   display: none;
 }
 
+.scroller-dots {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 15px;
+}
+
+.dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--slate-dark);
+  opacity: 0.3;
+  border-radius: 50%;
+  transition: all 0.3s ease;
+}
+
+.dot.active {
+  opacity: 1;
+  transform: scale(1.2);
+  background-color: var(--accent-pink);
+}
+
 .media-item {
   flex: 0 0 85%; /* Slightly larger for better mobile presence */
   scroll-snap-align: center;
   margin: 0; /* REMOVE browser default margins */
-  transition: opacity 0.5s ease, transform 0.5s ease;
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .media-item img {
@@ -177,34 +205,42 @@ footer {
 }
 
 /* Desktop adjustment */
+/* Update your existing Media Query section with this */
 @media (min-width: 768px) {
   .menu-list a {
     font-size: 3rem;
   }
 
   .landing-container {
-    align-items: flex-start; /* Allows content to flow naturally downward */
+    align-items: flex-start;
     padding-top: 40px;
   }
 
   .project-block {
     display: grid;
-    grid-template-columns: 1.5fr 3fr; 
-    align-items: center; /* Changed to center to align scroller with text middle */
-    gap: 60px;
+    grid-template-columns: 1.5fr 3fr;
+    align-items: start; /* Changed to start so images don't jump to the middle of long text */
+    gap: 80px;
     padding: 60px 10%;
     width: 100%;
   }
 
+  .project-media {
+    width: 100%;
+    position: sticky; /* Optional: This keeps the images visible as you scroll long descriptions */
+    top: 40px;
+  }
+
   .media-scroller {
-    /* We REMOVE flex-direction: column so it stays horizontal */
-    overflow-x: scroll; 
-    padding: 20px 0; /* Adjust padding for desktop */
-    /* We keep the mask if you want the fade effect on desktop too */
+    overflow-x: scroll; /* Vital for the JS script to work */
+    scrollbar-width: none; /* Hides scrollbar in Firefox */
+    -ms-overflow-style: none; /* Hides scrollbar in IE/Edge */
+    padding: 0;
+    mask-image: none; /* Optional: Remove fade on desktop for a cleaner look */
+    -webkit-mask-image: none;
   }
 
   .media-item {
-    flex: 0 0 100%; /* On desktop, one image fills the whole 1.5fr column */
-    scroll-snap-align: center;
+    flex: 0 0 100%; /* Ensures images take full width of the 1.5fr column */
   }
 }
