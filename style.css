@@ -130,7 +130,6 @@ body {
   max-width: 0;
   overflow: hidden;
   opacity: 0;
-  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
   display: flex;
   align-items: center;
 }
@@ -160,7 +159,6 @@ body {
 }
 
 .menu-toggle.is-open .toggle-char {
-  /*transform: rotate(180deg); /* Optional: flips the arrow over */
   color: var(--accent-pink); /* Subtle color change when open */
 }
 
@@ -196,6 +194,7 @@ body {
   line-height: 1.6;
   font-family: var(--font-main);
   color: var(--slate-dark);
+  text-align: left;
 }
 
 .media-scroller {
@@ -287,8 +286,6 @@ footer {
     width: 100vw;
     height: 100dvh;
     background: var(--white);
-    transform: translateX(100%); /* Hidden off-right */
-
     flex-direction: column;
     justify-content: center;
     z-index: -1;
@@ -300,7 +297,6 @@ footer {
   }
 
   .menu-toggle.is-open .menu-content {
-    transform: translateX(0); /* Slide into view */
     opacity: 1;
     max-width: 100vw; /* Override any desktop max-width */
   }
