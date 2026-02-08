@@ -9,6 +9,7 @@
 </head>
 
 <body>
+
   <nav class="set-menu">
     <button class="menu-toggle" aria-label="Toggle Menu">
       <span class="brace-left">{</span>
@@ -23,58 +24,44 @@
       <span class="brace-right">}</span>
     </button>
   </nav>
-  {{ content }}
 
-  {% include footer.html %}
+  <div class="page-wrapper">
+    {{ content }}
+    {% include footer.html %}
+  </div>
+
   <script>
-    // Select all scrollers on the page
-    document.querySelectorAll('.media-scroller').forEach((scroller) => {
-      // 1. Vertical scroll -> Horizontal move
-      scroller.addEventListener('wheel', (evt) => {
-        if (window.innerWidth > 768) {
-          evt.preventDefault();
-          scroller.scrollBy({
-            left: evt.deltaY * 10,
-            behavior: 'smooth'
-          });
-        }
-      }, { passive: false });
-
-      // 2. Update dots on scroll
-      scroller.addEventListener('scroll', () => {
-        // Looks for dots within the same project-media container
-        const dotsContainer = scroller.closest('.project-media').querySelector('.scroller-dots');
-        const dots = dotsContainer.querySelectorAll('.dot');
-
-        // Logic to find which image is most "visible"
-        const index = Math.round(scroller.scrollLeft / scroller.clientWidth);
-
-        dots.forEach((dot, i) => {
-          dot.classList.toggle('active', i === index);
-        });
-      });
-    });
-  </script>
-  <script>
+    // 1. Set Menu Logic
     const menuBtn = document.querySelector('.menu-toggle');
-
-    // Toggle open class on click
     menuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       menuBtn.classList.toggle('is-open');
     });
 
-    // Close menu if clicking anywhere else on the screen
     document.addEventListener('click', (e) => {
-      if (!menuBtn.contains(e.target)) {
-        menuBtn.classList.remove('is-open');
-      }
+      if (!menuBtn.contains(e.target)) menuBtn.classList.remove('is-open');
     });
 
-    // Close menu when a link is clicked
-    document.querySelectorAll('.menu-links a').forEach(link => {
-      link.addEventListener('click', () => {
-        menuBtn.classList.remove('is-open');
+    // 2. Media Scroller Logic
+    document.querySelectorAll('.media-scroller').forEach((scroller) => {
+      // Horizontal Scroll on Desktop
+      scroller.addEventListener('wheel', (evt) => {
+        if (window.innerWidth > 768) {
+          evt.preventDefault();
+          scroller.scrollLeft += evt.deltaY * 1.5; // Smoother multiplier
+        }
+      }, { passive: false });
+
+      // Update Dots
+      scroller.addEventListener('scroll', () => {
+        const container = scroller.closest('.project-media');
+        if (!container) return;
+        const dotsContainer = container.querySelector('.scroller-dots');
+        if (!dotsContainer) return;
+
+        const dots = dotsContainer.querySelectorAll('.dot');
+        const index = Math.round(scroller.scrollLeft / scroller.clientWidth);
+        dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
       });
     });
   </script>
