@@ -39,14 +39,16 @@
       e.stopPropagation();
       const isOpen = menuBtn.classList.toggle('is-open');
 
-      // Swap character: < when closed, > when open
-      // Using &lt; and &gt; equivalent text
+      // Toggle the lock class on the body
+      document.body.classList.toggle('menu-open', isOpen);
+
       toggleChar.textContent = isOpen ? '>' : '<';
     });
 
     document.addEventListener('click', (e) => {
       if (!menuBtn.contains(e.target)) {
         menuBtn.classList.remove('is-open');
+        document.body.classList.remove('menu-open');
         toggleChar.textContent = '<';
       }
     });

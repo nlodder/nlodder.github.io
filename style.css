@@ -285,12 +285,24 @@ footer {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
-    background: rgba(255, 255, 255, 0.98);
+    /* dvh (Dynamic Viewport Height) prevents gaps on mobile browsers */
+    height: 100dvh; 
+    
+    /* Option A: Solid background that covers everything */
+    /* background: var(--white);  */
+    
+    /* Option B: Gradient to site background (Uncomment below to use) */
+    background: linear-gradient(to bottom, var(--slate-light) 0%, var(--white) 15%, var(--white) 85%, var(--slate-light) 100%);
     justify-content: center;
     z-index: -1;
     padding: 0;
   }
+
+  /* Ensures the body doesn't scroll behind the open menu */
+  body.menu-open {
+    overflow: hidden;
+  }
+
   .menu-links {
     flex-direction: column;
     text-align: center;
