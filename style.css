@@ -189,24 +189,22 @@ footer {
 
   .project-block {
     display: grid;
-    grid-template-columns: 1.5fr 3fr; /* Slightly wider left col for better visibility */
-    align-items: start;
-    gap: 80px;
+    grid-template-columns: 1.5fr 3fr; 
+    align-items: center; /* Changed to center to align scroller with text middle */
+    gap: 60px;
     padding: 60px 10%;
-    width: 100%; /* Ensures it fills the container */
+    width: 100%;
   }
 
   .media-scroller {
-    flex-direction: column;
-    overflow-x: visible; /* Disable horizontal scroll on desktop */
-    mask-image: none; /* Remove the fade effect for vertical stack */
-    -webkit-mask-image: none;
-    padding: 0; /* Remove the mobile "peek" padding */
+    /* We REMOVE flex-direction: column so it stays horizontal */
+    overflow-x: scroll; 
+    padding: 20px 0; /* Adjust padding for desktop */
+    /* We keep the mask if you want the fade effect on desktop too */
   }
 
   .media-item {
-    flex: none; /* Reset the 80% width from mobile */
-    width: 100%; /* Take full width of the 1.5fr column */
-    margin-bottom: 30px; /* Space between stacked images */
+    flex: 0 0 100%; /* On desktop, one image fills the whole 1.5fr column */
+    scroll-snap-align: center;
   }
 }
