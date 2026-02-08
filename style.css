@@ -207,8 +207,8 @@ footer {
 /* --- Set Menu Container --- */
 .set-menu {
   position: fixed;
-  top: 30px;
-  right: 30px;
+  top: 15px;
+  right: 15px;
   z-index: 1000;
 }
 
@@ -231,7 +231,7 @@ footer {
   color: var(--accent-pink);
   font-family: "Georgia", serif; /* Elegant high-contrast serif */
   font-weight: 200;
-  font-size: 3.5rem;
+  font-size: 2rem;
   line-height: 1;
   transition: all 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   user-select: none;
