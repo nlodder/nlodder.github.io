@@ -289,11 +289,6 @@ footer {
     flex-direction: column;
     justify-content: center;
     z-index: -1;
-
-    /* This transition handles BOTH opening and closing */
-    transition:
-      transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
-      opacity 0.5s ease;
   }
 
   .menu-toggle.is-open .menu-content {
@@ -305,7 +300,6 @@ footer {
   body.menu-open {
     overflow: hidden;
     background-color: var(--white);
-    transition: background-color 0.5s ease;
   }
   .menu-links {
     flex-direction: column;
