@@ -7,45 +7,48 @@
   --white: #ffffff;
 }
 
-* { box-sizing: border-box; margin: 0; padding: 0; }
-
-body {
-  font-family: 'Helvetica Neue', sans-serif;
+/* Reset and full-height setup */
+html, body {
+  height: 100%;
+  margin: 0;
   background-color: var(--slate-light);
-  color: var(--text-main);
-  line-height: 1.6;
-  padding: 20px; /* Mobile breathing room */
 }
 
-/* Mobile-First Typography */
-h1 {
-  font-size: 2.5rem;
-  line-height: 1.1;
-  color: var(--slate-dark);
+.landing-container {
+  display: flex;
+  justify-content: center; /* Horizontal center */
+  align-items: center;     /* Vertical center */
+  height: 100vh;           /* Full screen height */
+  padding: 20px;
 }
 
-.accent-text { color: var(--accent-pink); }
+.menu-list {
+  list-style: none;
+  text-align: center; /* Centers the text inside the list */
+  padding: 0;
+}
 
-/* Buttons */
-.btn-primary {
-  display: inline-block;
-  background-color: var(--accent-pink);
-  color: var(--white);
-  padding: 12px 24px;
+.menu-list li {
+  margin: 20px 0; /* Vertical spacing between links */
+}
+
+.menu-list a {
   text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-  margin-top: 20px;
+  font-size: 1.8rem; /* Bold enough for mobile */
+  font-weight: 300;  /* Light weight for that "clean" look */
+  color: var(--slate-dark);
+  transition: all 0.3s ease;
 }
 
-/* Desktop Responsiveness (The Switch) */
+/* The Vibrant Accent on Hover */
+.menu-list a:hover {
+  color: var(--accent-pink);
+  letter-spacing: 2px; /* Subtle elegant animation */
+}
+
+/* Desktop adjustment */
 @media (min-width: 768px) {
-  body { padding: 40px 10%; } /* Wider margins for desktop */
-  
-  .hero {
-    padding: 100px 0;
-    max-width: 800px;
+  .menu-list a {
+    font-size: 2.5rem; /* Larger links on bigger screens */
   }
-  
-  h1 { font-size: 4rem; }
 }
