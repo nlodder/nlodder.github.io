@@ -105,23 +105,25 @@ body {
   border: none;
   cursor: pointer;
   display: flex;
+  flex-direction: row-reverse; /* Put the character on the right of the text */
   align-items: center;
   padding: 0;
+  height: 40px;
   outline: none;
 }
 
-.brace-left,
-.brace-right {
-  color: var(--accent-pink);
-  font-family: "Optima", sans-serif; /* Using your main font for cleaner geometry */
+.toggle-char {
+  color: var(--slate-dark);
+  font-family: "Optima", sans-serif;
   font-weight: 300;
-  font-size: 2.2rem; /* Slightly smaller than braces but sharper */
-  line-height: 1; 
+  font-size: 2.2rem;
+  line-height: 1;
   display: flex;
   align-items: center;
+  justify-content: center;
+  width: 30px; /* Fixed width prevents the menu from jumping */
   height: 100%;
-  transition: all 0.4s ease;
-  user-select: none;
+  transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
 
 .menu-content {
@@ -155,6 +157,11 @@ body {
   font-size: 1.1rem;
   font-style: italic;
   transition: color 0.3s;
+}
+
+.menu-toggle.is-open .toggle-char {
+  transform: rotate(180deg); /* Optional: flips the arrow over */
+  color: var(--accent-pink);   /* Subtle color change when open */
 }
 
 .menu-toggle.is-open .menu-content {

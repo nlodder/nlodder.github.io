@@ -12,7 +12,8 @@
 
   <nav class="set-menu">
     <button class="menu-toggle" aria-label="Toggle Menu">
-      <span class="brace-left">&lt;</span>
+      <span class="toggle-char">&lt;</span>
+
       <div class="menu-content">
         <ul class="menu-links">
           <li><a href="/">home</a></li>
@@ -21,7 +22,6 @@
           <li><a href="/about/">about</a></li>
         </ul>
       </div>
-      <span class="brace-right">&gt</span>
     </button>
   </nav>
 
@@ -33,13 +33,22 @@
   <script>
     // 1. Set Menu Logic
     const menuBtn = document.querySelector('.menu-toggle');
+    const toggleChar = menuBtn.querySelector('.toggle-char');
+
     menuBtn.addEventListener('click', (e) => {
       e.stopPropagation();
-      menuBtn.classList.toggle('is-open');
+      const isOpen = menuBtn.classList.toggle('is-open');
+
+      // Swap character: < when closed, > when open
+      // Using &lt; and &gt; equivalent text
+      toggleChar.textContent = isOpen ? '>' : '<';
     });
 
     document.addEventListener('click', (e) => {
-      if (!menuBtn.contains(e.target)) menuBtn.classList.remove('is-open');
+      if (!menuBtn.contains(e.target)) {
+        menuBtn.classList.remove('is-open');
+        toggleChar.textContent = '<';
+      }
     });
 
     // 2. Media Scroller Logic
