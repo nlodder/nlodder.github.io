@@ -160,7 +160,7 @@ body {
 }
 
 .menu-toggle.is-open .toggle-char {
-  transform: rotate(180deg); /* Optional: flips the arrow over */
+  /* transform: rotate(180deg); Optional: flips the arrow over */
   color: var(--accent-pink);   /* Subtle color change when open */
 }
 
