@@ -46,6 +46,16 @@ html, body {
   letter-spacing: 2px; /* Subtle elegant animation */
 }
 
+footer {
+  padding: 20px;
+  text-align: center;
+  font-family: "Optima", "Iowan Old Style", "Seravek", sans-serif;
+  font-size: 10.5px;
+  letter-spacing: 0.08em; /* Gives it that 'airy' desert feel */
+  text-transform: uppercase; /* Looks like a luxury brand in small caps */
+  font-weight: 500;
+}
+
 /* Desktop adjustment */
 @media (min-width: 768px) {
   .menu-list a {
