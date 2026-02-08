@@ -5,20 +5,27 @@
   --accent-pink: #FF4D8D;
   --text-main: #2D2926;
   --white: #ffffff;
+
+  --font-main: "Optima", "Iowan Old Style", "Seravek", sans-serif;
 }
 
 /* Reset and full-height setup */
+
+* { box-sizing: border-box; }
+
 html, body {
   height: 100%;
   margin: 0;
   background-color: var(--slate-light);
+  display: flex;
+  flex-direction: column;
 }
 
 .landing-container {
   display: flex;
   justify-content: center; /* Horizontal center */
   align-items: center;     /* Vertical center */
-  height: 100vh;           /* Full screen height */
+  flex: 1; /* This takes up all available space, pushing footer down */
   padding: 20px;
 }
 
@@ -29,36 +36,44 @@ html, body {
 }
 
 .menu-list li {
-  margin: 20px 0; /* Vertical spacing between links */
+  margin: 25px 0; /* Vertical spacing between links */
 }
 
 .menu-list a {
   text-decoration: none;
+  font-family: var(--font-main);
   font-size: 1.8rem; /* Bold enough for mobile */
-  font-weight: 300;  /* Light weight for that "clean" look */
+  font-weight: 400;  /* Light weight for that "clean" look */
+  letter-spacing: 0.05em;
+  text-transform: none;
   color: var(--slate-dark);
-  transition: all 0.3s ease;
+  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  display: inline-block;
 }
 
 /* The Vibrant Accent on Hover */
 .menu-list a:hover {
   color: var(--accent-pink);
-  letter-spacing: 2px; /* Subtle elegant animation */
+  font-style: italic;
+  letter-spacing: 0.15em; /* Subtle elegant animation */
+  transform: scale(1.05);
 }
 
 footer {
-  padding: 20px;
+  padding: 30px 20px;
   text-align: center;
-  font-family: "Optima", "Iowan Old Style", "Seravek", sans-serif;
-  font-size: 10.5px;
-  letter-spacing: 0.08em; /* Gives it that 'airy' desert feel */
+  font-family: var(--font-main);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em; /* Gives it that 'airy' desert feel */
   text-transform: uppercase; /* Looks like a luxury brand in small caps */
   font-weight: 500;
+  color: var(--slate-dark);
+  opacity: 0.7;
 }
 
 /* Desktop adjustment */
 @media (min-width: 768px) {
   .menu-list a {
-    font-size: 2.5rem; /* Larger links on bigger screens */
+    font-size: 3rem; /* Larger links on bigger screens */
   }
 }
