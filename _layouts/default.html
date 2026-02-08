@@ -19,7 +19,10 @@
       scroller.addEventListener('wheel', (evt) => {
         if (window.innerWidth > 768) {
           evt.preventDefault();
-          scroller.scrollLeft += evt.deltaY;
+          scroller.scrollBy({
+            left: evt.deltaY * 2,
+            behavior: 'smooth'
+          });
         }
       }, { passive: false });
 
