@@ -1,0 +1,51 @@
+/* Color Palette & Variables */
+:root {
+  --slate-dark: #4A4441;
+  --slate-light: #c8bab0;
+  --accent-pink: #FF4D8D;
+  --text-main: #2D2926;
+  --white: #ffffff;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Helvetica Neue', sans-serif;
+  background-color: var(--slate-light);
+  color: var(--text-main);
+  line-height: 1.6;
+  padding: 20px; /* Mobile breathing room */
+}
+
+/* Mobile-First Typography */
+h1 {
+  font-size: 2.5rem;
+  line-height: 1.1;
+  color: var(--slate-dark);
+}
+
+.accent-text { color: var(--accent-pink); }
+
+/* Buttons */
+.btn-primary {
+  display: inline-block;
+  background-color: var(--accent-pink);
+  color: var(--white);
+  padding: 12px 24px;
+  text-decoration: none;
+  border-radius: 8px;
+  font-weight: bold;
+  margin-top: 20px;
+}
+
+/* Desktop Responsiveness (The Switch) */
+@media (min-width: 768px) {
+  body { padding: 40px 10%; } /* Wider margins for desktop */
+  
+  .hero {
+    padding: 100px 0;
+    max-width: 800px;
+  }
+  
+  h1 { font-size: 4rem; }
+}
