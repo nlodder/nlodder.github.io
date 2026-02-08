@@ -1,44 +1,21 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nathan Lodder | Portfolio</title>
-    <link rel="stylesheet" href="style.css">
-</head>
+---
+layout: default
+title: Nathan Lodder's Portfolio
+---
 
-<body>
-    <main class="landing-container">
-        <nav class="centered-menu">
-            <ul class="menu-list">
-                <li><a href="project1.html">Project 1</a></li>
-                <li><a href="project2.html">Project 2</a></li>
-                <li><a href="interests.html">Interests</a></li>
-                <li><a href="contact.html">Contact</a></li>
-                <li><a href="assets/docs/resume.pdf" target="_blank" class="resume-link">Resume</a></li>
-            </ul>
-        </nav>
-    </main>
-    <nav>
-        <div class="logo">JS</div>
-        <ul class="nav-links">
-            <li><a href="#work">Work</a></li>
-            <li><a href="#about">About</a></li>
+<header class="hero">
+    <h1>Creative Developer <span class="accent-text">Design Focused.</span></h1>
+    <p>Building clean, organic digital spaces using slate tones and vibrant energy.</p>
+    <a href="#" class="btn-primary">Get in touch</a>
+</header>
+<main class="landing-container">
+    <nav class="centered-menu">
+        <ul class="menu-list">
+            <li><a href="project1.html">Project 1</a></li>
+            <li><a href="project2.html">Project 2</a></li>
+            <li><a href="interests.html">Interests</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="assets/docs/resume.pdf" target="_blank" class="resume-link">Resume</a></li>
         </ul>
     </nav>
-
-    <header class="hero">
-        <h1>Creative Developer <span class="accent-text">Design Focused.</span></h1>
-        <p>Building clean, organic digital spaces using slate tones and vibrant energy.</p>
-        <a href="#" class="btn-primary">Get in touch</a>
-    </header>
-
-    <section id="work" class="project-grid">
-        <div class="project-card">
-            <div class="card-image"></div>
-            <h3>Project One</h3>
-        </div>
-    </section>
-    {{ content }} {% include footer.html %}
-</body>
-</html>
+</main>
