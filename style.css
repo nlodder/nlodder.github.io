@@ -49,10 +49,11 @@ body {
 
 .landing-container {
   display: flex;
-  justify-content: center; /* Horizontal center */
-  align-items: center; /* Vertical center */
-  flex: 1; /* This takes up all available space, pushing footer down */
+  flex-direction: column; /* Changed from default row */
+  align-items: center; 
+  flex: 1; 
   padding: 20px;
+  width: 100%; /* Ensure the container itself spans the screen */
 }
 
 .menu-list {
@@ -87,11 +88,12 @@ body {
 
 /* MOBILE STYLES (Default) */
 .project-block {
+  width: 100%;
+  max-width: 1200px; /* Keeps it from getting too wide on ultrawide monitors */
   display: flex;
-  flex-direction: column; /* Stacks them vertically */
+  flex-direction: column;
   gap: 20px;
-  margin-bottom: 80px; /* Space between different projects */
-  padding: 20px;
+  margin-bottom: 80px;
 }
 
 .project-info {
@@ -139,11 +141,10 @@ body {
 }
 
 .media-item {
-  flex: 0 0 80%; /* Each item takes 80% of the screen width */
-  scroll-snap-align: center; /* Snaps to the middle */
-  transition:
-    opacity 0.5s ease,
-    transform 0.5s ease;
+  flex: 0 0 85%; /* Slightly larger for better mobile presence */
+  scroll-snap-align: center;
+  margin: 0; /* REMOVE browser default margins */
+  transition: opacity 0.5s ease, transform 0.5s ease;
 }
 
 .media-item img {
