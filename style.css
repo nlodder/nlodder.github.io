@@ -160,7 +160,7 @@ body {
 }
 
 .menu-toggle.is-open .toggle-char {
-  /* transform: rotate(180deg); Optional: flips the arrow over */
+  /*transform: rotate(180deg); /* Optional: flips the arrow over */
   color: var(--accent-pink);   /* Subtle color change when open */
 }
 
@@ -279,10 +279,6 @@ footer {
 
 /* MOBILE MENU */
 @media (max-width: 767px) {
-  /* .set-menu {
-    top: calc(15px + env(safe-area-inset-top));
-    right: 15px;
-  } */
   .menu-toggle.is-open .menu-content {
     flex-direction: column;
     position: fixed;
