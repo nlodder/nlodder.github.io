@@ -9,6 +9,20 @@
 </head>
 
 <body>
+  <nav class="set-menu">
+    <button class="menu-toggle" aria-label="Toggle Menu">
+      <span class="brace-left">{</span>
+      <div class="menu-content">
+        <ul class="menu-links">
+          <li><a href="/">home</a></li>
+          <li><a href="/robotics/">robotics</a></li>
+          <li><a href="/engineering/">engineering</a></li>
+          <li><a href="/about/">about</a></li>
+        </ul>
+      </div>
+      <span class="brace-right">}</span>
+    </button>
+  </nav>
   {{ content }}
 
   {% include footer.html %}
@@ -38,6 +52,29 @@
         dots.forEach((dot, i) => {
           dot.classList.toggle('active', i === index);
         });
+      });
+    });
+  </script>
+  <script>
+    const menuBtn = document.querySelector('.menu-toggle');
+
+    // Toggle open class on click
+    menuBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      menuBtn.classList.toggle('is-open');
+    });
+
+    // Close menu if clicking anywhere else on the screen
+    document.addEventListener('click', (e) => {
+      if (!menuBtn.contains(e.target)) {
+        menuBtn.classList.remove('is-open');
+      }
+    });
+
+    // Close menu when a link is clicked
+    document.querySelectorAll('.menu-links a').forEach(link => {
+      link.addEventListener('click', () => {
+        menuBtn.classList.remove('is-open');
       });
     });
   </script>
