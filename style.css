@@ -279,10 +279,10 @@ footer {
 
 /* MOBILE MENU */
 @media (max-width: 767px) {
-  .set-menu {
+  /* .set-menu {
     top: calc(15px + env(safe-area-inset-top));
     right: 15px;
-  }
+  } */
   .menu-toggle.is-open .menu-content {
     flex-direction: column;
     position: fixed;
