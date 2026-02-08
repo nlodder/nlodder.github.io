@@ -289,10 +289,10 @@ footer {
     height: 100dvh; 
     
     /* Option A: Solid background that covers everything */
-    /* background: var(--white);  */
+    background: var(--white); 
     
     /* Option B: Gradient to site background (Uncomment below to use) */
-    background: linear-gradient(to bottom, var(--slate-light) 0%, var(--white) 15%, var(--white) 85%, var(--slate-light) 100%);
+    /* background: linear-gradient(to bottom, var(--slate-light) 0%, var(--white) 15%, var(--white) 85%, var(--slate-light) 100%); */
     justify-content: center;
     z-index: -1;
     padding: 0;
