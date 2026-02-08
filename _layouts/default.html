@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ page.title }}</title>
-    <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ page.title }}</title>
+  <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
 </head>
+
 <body>
-    {{ content }}
-      
-    {% include footer.html %}
+  {{ content }}
+
+  {% include footer.html %}
+  <script>
+    // Select all scrollers on the page
+    document.querySelectorAll('.media-scroller').forEach((scroller) => {
+      // 1. Vertical scroll -> Horizontal move
+      scroller.addEventListener('wheel', (evt) => {
+        if (window.innerWidth > 768) {
+          evt.preventDefault();
+          scroller.scrollLeft += evt.deltaY;
+        }
+      }, { passive: false });
+
+      // 2. Update dots on scroll
+      scroller.addEventListener('scroll', () => {
+        // Looks for dots within the same project-media container
+        const dotsContainer = scroller.closest('.project-media').querySelector('.scroller-dots');
+        const dots = dotsContainer.querySelectorAll('.dot');
+
+        // Logic to find which image is most "visible"
+        const index = Math.round(scroller.scrollLeft / scroller.clientWidth);
+
+        dots.forEach((dot, i) => {
+          dot.classList.toggle('active', i === index);
+        });
+      });
+    });
+  </script>
 </body>
+
 </html>
