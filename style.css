@@ -200,11 +200,13 @@ body {
 .media-scroller {
   width: 100%;
   display: flex;
+  align-items: flex-end;
   overflow-x: scroll;
   scroll-snap-type: x mandatory;
   gap: 20px;
   padding: 50px 10%;
   scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
 }
 .media-scroller::-webkit-scrollbar {
   display: none;
