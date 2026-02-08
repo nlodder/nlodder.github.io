@@ -301,6 +301,8 @@ footer {
   /* Ensures the body doesn't scroll behind the open menu */
   body.menu-open {
     overflow: hidden;
+    background-color: var(--white);
+    transition: background-color 0.5s ease;
   }
 
   .menu-links {
