@@ -193,6 +193,16 @@ body {
   display: none;
 }
 
+.scroller-dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 20px;
+  width: 100%;
+  height: 20px; /* Ensures space is reserved for them */
+}
+
 .dot {
   width: 6px;
   height: 6px;
@@ -201,9 +211,11 @@ body {
   border-radius: 50%;
   transition: all 0.3s ease;
 }
+
 .dot.active {
   opacity: 1;
   background-color: var(--accent-pink);
+  scale: 1.3;
 }
 
 .media-item {
@@ -247,7 +259,7 @@ footer {
   }
 }
 
-/* MOBILE MENU FIX */
+/* MOBILE MENU */
 @media (max-width: 767px) {
   .set-menu {
     top: 15px;

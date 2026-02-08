@@ -48,7 +48,7 @@
       scroller.addEventListener('wheel', (evt) => {
         if (window.innerWidth > 768) {
           evt.preventDefault();
-          scroller.scrollLeft += evt.deltaY * 1.5; // Smoother multiplier
+          scroller.scrollLeft += evt.deltaY * 4;
         }
       }, { passive: false });
 
