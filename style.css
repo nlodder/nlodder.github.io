@@ -208,7 +208,7 @@ body {
   display: block;
 }
 
-.project-header {
+.project-header h2 {
   font-family: var(--font-main);
   font-size: 2rem;
   color: var(--slate-dark);
