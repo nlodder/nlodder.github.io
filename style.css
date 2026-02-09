@@ -190,6 +190,23 @@ body {
   width: 100%;
   overflow: hidden;
 }
+
+.media-item {
+  flex: 0 0 85%;
+  scroll-snap-align: start;
+  justify-content: flex-end;
+}
+
+.media-item img {
+  width: 100%;
+  border-radius: 4px;
+}
+
+.media-item video {
+  width: 100%;
+  border-radius: 4px; /* Matches your images */
+  display: block;
+}
 .project-description {
   line-height: 1.6;
   font-family: var(--font-main);
@@ -208,6 +225,7 @@ body {
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
 }
+
 .media-scroller::-webkit-scrollbar {
   display: none;
 }
@@ -237,34 +255,18 @@ body {
   scale: 1.3;
 }
 
-.media-item {
-  flex: 0 0 85%;
-  scroll-snap-align: start;
-}
-
-.media-item img {
-  width: 100%;
-  border-radius: 4px;
-}
-
-.media-item video {
-  width: 100%;
-  border-radius: 4px; /* Matches your images */
-  display: block;
-}
-
 /* DESKTOP QUERIES */
 @media (min-width: 768px) {
   .menu-list a {
     font-size: 3.5rem;
   }
-  
+
   .project-block {
     display: grid;
     grid-template-columns: 1.5fr 3.5fr;
     padding: 60px 10%;
   }
-  
+
   .project-media {
     position: sticky;
     top: 40px;
@@ -292,12 +294,12 @@ body {
     justify-content: center;
     z-index: -1;
   }
-  
+
   .menu-toggle.is-open .menu-content {
     opacity: 1;
     max-width: 100vw; /* Override any desktop max-width */
   }
-  
+
   /* Ensures the body doesn't scroll behind the open menu */
   body.menu-open {
     overflow: hidden;
@@ -382,8 +384,8 @@ footer p {
   padding: 0;
   margin: 10px 0 20px 0; /* Space above/below the list */
   display: flex;
-  flex-wrap: wrap;       /* Allows tags to wrap on small screens */
-  gap: 10px;             /* Space between tags */
+  flex-wrap: wrap; /* Allows tags to wrap on small screens */
+  gap: 10px; /* Space between tags */
 }
 
 .project-tools li,
@@ -393,7 +395,7 @@ footer p {
   color: var(--slate-dark);
   border: 1px solid var(--slate-dark);
   padding: 4px 12px;
-  border-radius: 20px;   /* Makes them look like pills */
+  border-radius: 20px; /* Makes them look like pills */
   text-transform: uppercase;
   letter-spacing: 0.05em;
   transition: all 0.3s ease;
