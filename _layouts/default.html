@@ -6,6 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <title>{{ page.title }}</title>
   <link rel="stylesheet" href="{{ '/style.css' | relative_url }}">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 </head>
 
 <body>
@@ -61,7 +62,7 @@
 
           // If we are already mid-animation, ignore new inputs
           if (isScrolling) return;
-          const threshold = 40; // Adjust this number for sensitivity
+          const threshold = 15; // Adjust this number for sensitivity
           const itemWidth = scroller.querySelector('.media-item').clientWidth + 20; // width + gap
 
           if (Math.abs(evt.deltaY) > threshold) {
