@@ -90,7 +90,10 @@
         if (!dotsContainer) return;
 
         const dots = dotsContainer.querySelectorAll('.dot');
-        const index = Math.round(scroller.scrollLeft / scroller.clientWidth - 1);
+        const item = scroller.querySelector('.media-item');
+        const scrollStep = item.clientWidth + 20;
+
+        const index = Math.round(scroller.scrollLeft / scrollStep);
         dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
       });
     });
