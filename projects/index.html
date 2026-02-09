@@ -4,8 +4,8 @@ title: Robotics
 ---
 
 <header class="hero">
-    <h1><span class="accent-text">.</span>Robotics</h1>
-    <p>My projects</p>
+    <h1><span class="accent-text">.</span>projects</h1>
+    <p>My academic and personal projects</p>
 </header>
 <main class="landing-container">
     <section class="project-block">
@@ -33,9 +33,39 @@ title: Robotics
         </div>
         <div class="project-info">
             <h2 class="project-header">Pet Rescue Robot</h2>
+            <ul class="project-tools">
+                <li>C++</li>
+                <li>ESP32</li>
+                <li>LiDar Sensors</li>
+                <li>Magnetometer Sensors</li>
+                <li>Servo Motors</li>
+                <li>OnShape</li>
+            </ul>
+            <ul class="project-skills">
+                <li>Object Oriented Programming</li>
+                <li>3D CAD</li>
+                <li>Circuit Design</li>
+                <li>Sensor Characterization</li>
+                <li>Prototyping</li>
+            </ul>
             <p class="project-description">
-                Autonomous robot built from scratch capable of navigating obstacle-ridden 
-                'burning building' to save 'pets'.
+                As part of a team of four, I designed, built, and competed with an autonomous robot capable
+                of seeking out and rescuing small stuffed animals (“pets”) from an obstacle-filled environment.
+                Our robot placed 2nd out of 15 teams in the final course competition.<br><br>
+
+                The challenge was to engineer a robot that could navigate a defined course and identify, collect,
+                and deliver seven pets to a designated safe zone. The pets were placed in varied and challenging
+                positions: behind obstructions, on top of pedestals, in corners, and one in an open area. Each pet
+                was marked with a small magnet for detection.<br><br>
+
+                Our solution integrated a range of hardware and control systems:<br>
+                - LiDAR for initial target detection and navigation support<br>
+                - Infrared reflectance sensor array in a PID feedback loop for line-following navigation<br>
+                - Dual triple-axis magnetometers to guide the robotic claw with precision toward magnetic targets<br>
+                - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control components<br><br>
+
+                The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and robotic
+                arm were built from laser-cut hardboard and 3D-printed PLA components.
             </p>
         </div>
     </section>
@@ -43,7 +73,8 @@ title: Robotics
         <div class="project-media">
             <div class="media-scroller">
                 <figure class="media-item">
-                    <img src="/assets/images/vexbot/BallCollRob4Balls.jpeg" alt="Vexbot holding four balls" loading="lazy">
+                    <img src="/assets/images/vexbot/BallCollRob4Balls.jpeg" alt="Vexbot holding four balls"
+                        loading="lazy">
                     <figcaption>01. Balls Collected</figcaption>
                 </figure>
                 <figure class="media-item">
@@ -51,11 +82,13 @@ title: Robotics
                     <figcaption>02. Front View</figcaption>
                 </figure>
                 <figure class="media-item">
-                    <img src="/assets/images/vexbot/BallCollRob-P1.jpeg" alt="Perspective view of Vexbot" loading="lazy">
+                    <img src="/assets/images/vexbot/BallCollRob-P1.jpeg" alt="Perspective view of Vexbot"
+                        loading="lazy">
                     <figcaption>03. Perspective View</figcaption>
                 </figure>
                 <figure class="media-item">
-                    <img src="/assets/images/vexbot/BallCollRob-P2.jpeg" alt="Perspective view of Vexbot" loading="lazy">
+                    <img src="/assets/images/vexbot/BallCollRob-P2.jpeg" alt="Perspective view of Vexbot"
+                        loading="lazy">
                     <figcaption>04. Perspective View</figcaption>
                 </figure>
             </div>
@@ -69,8 +102,19 @@ title: Robotics
         </div>
         <div class="project-info">
             <h2 class="project-header">Vexbot</h2>
+            <ul class="project-tools">
+                <li>C++</li>
+                <li>Vex Vision Sensors</li>
+                <li>Vex Motors</li>
+                <li>Vex Distance Sensors</li>
+            </ul>
+            <ul class="project-skills">
+                <li>Object Oriented Programming</li>
+                <li>Sensor Characterization</li>
+                <li>Prototyping</li>
+            </ul>
             <p class="project-description">
-                Vexbot that uses vision sensors' color recognition cability to identify and 
+                Vexbot that uses vision sensors' color recognition cability to identify and
                 collect coloured balls. Robot would then use the same sensor to scan for and
                 identify a delivery location, and would use a distance sensor to detect when
                 it was close enough to drop off the balls.

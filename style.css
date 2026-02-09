@@ -217,7 +217,7 @@ body {
   justify-content: center;
   align-items: center;
   gap: 12px;
-  margin-top: 20px;
+  margin-top: 10px;
   width: 100%;
   height: 20px; /* Ensures space is reserved for them */
 }
@@ -367,4 +367,27 @@ footer p {
   opacity: 0.6;
   margin-top: 10px;
   letter-spacing: 0.05em;
+}
+
+.project-tools,
+.project-skills {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0 20px 0; /* Space above/below the list */
+  display: flex;
+  flex-wrap: wrap;       /* Allows tags to wrap on small screens */
+  gap: 10px;             /* Space between tags */
+}
+
+.project-tools li,
+.project-skills li {
+  font-family: var(--font-main);
+  font-size: 0.8rem;
+  color: var(--accent-pink);
+  border: 1px solid var(--accent-pink);
+  padding: 4px 12px;
+  border-radius: 20px;   /* Makes them look like pills */
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transition: all 0.3s ease;
 }
