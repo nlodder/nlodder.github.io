@@ -207,6 +207,13 @@ body {
   border-radius: 4px; /* Matches your images */
   display: block;
 }
+
+.project-header {
+  font-family: var(--font-main);
+  font-size: 2rem;
+  color: var(--slate-dark);
+}
+
 .project-description {
   line-height: 1.6;
   font-family: var(--font-main);
