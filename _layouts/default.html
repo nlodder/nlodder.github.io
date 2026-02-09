@@ -51,51 +51,60 @@
     });
 
     // 2. Media Scroller Logic
-    document.querySelectorAll('.media-scroller').forEach((scroller) => {
-      let isScrolling = false; // Prevents "hyper-scrolling"
+    let isScrolling = false;
+    const container = scroller.closest('.project-media');
+    const dotsContainer = container?.querySelector('.scroller-dots');
+    const items = scroller.querySelectorAll('.media-item');
 
-      scroller.addEventListener('wheel', (evt) => {
-        if (window.innerWidth > 768) {
-          evt.preventDefault();
+    // Helper to get exact scroll distance between items
+    const getScrollStep = () => items[1].offsetLeft - items[0].offsetLeft;
 
-          // If we are already mid-animation, ignore new inputs
-          if (isScrolling) return;
-          const threshold = 15; // Adjust this number for sensitivity
-          const itemWidth = scroller.querySelector('.media-item').clientWidth + 20; // width + gap
+    // A. Click on dots to jump to image
+    if (dotsContainer) {
+      const dots = dotsContainer.querySelectorAll('.dot');
+      dots.forEach((dot, i) => {
+        dot.style.cursor = 'pointer'; // Make it look clickable
+        dot.addEventListener('click', () => {
+          const scrollStep = getScrollStep();
+          scroller.scrollTo({
+            left: i * scrollStep,
+            behavior: 'smooth'
+          });
+        });
+      });
+    }
 
-          if (Math.abs(evt.deltaY) > threshold) {
-            isScrolling = true;
+    // B. Wheel Scroll Logic (Desktop)
+    scroller.addEventListener('wheel', (evt) => {
+      if (window.innerWidth > 768) {
+        evt.preventDefault();
+        if (isScrolling) return;
 
-            // Determine direction: positive deltaY is scroll down (next), negative is up (prev)
-            const direction = evt.deltaY > 0 ? 1 : -1;
+        const threshold = 15;
+        if (Math.abs(evt.deltaY) > threshold) {
+          isScrolling = true;
+          const direction = evt.deltaY > 0 ? 1 : -1;
+          const scrollStep = getScrollStep();
 
-            scroller.scrollBy({
-              left: itemWidth * direction,
-              behavior: 'smooth'
-            });
+          scroller.scrollBy({
+            left: scrollStep * direction,
+            behavior: 'smooth'
+          });
 
-            // Cooldown: wait for the smooth scroll to finish before allowing next move
-            setTimeout(() => {
-              isScrolling = false;
-            }, 500);
-          }
+          setTimeout(() => { isScrolling = false; }, 500);
         }
-      }, { passive: false });
+      }
+    }, { passive: false });
 
-      // Update Dots
-      scroller.addEventListener('scroll', () => {
-        const container = scroller.closest('.project-media');
-        if (!container) return;
-        const dotsContainer = container.querySelector('.scroller-dots');
-        if (!dotsContainer) return;
-
-        const dots = dotsContainer.querySelectorAll('.dot');
-        const item = scroller.querySelector('.media-item');
-        const scrollStep = item.clientWidth + 20;
-
+    // C. Update Dots on Scroll
+    scroller.addEventListener('scroll', () => {
+      if (!dotsContainer) return;
+      const dots = dotsContainer.querySelectorAll('.dot');
+      if (items.length > 1) {
+        const scrollStep = getScrollStep();
         const index = Math.round(scroller.scrollLeft / scrollStep);
         dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-      });
+      }
     });
   </script>
 </body>

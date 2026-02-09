@@ -239,13 +239,19 @@ body {
 
 .media-item {
   flex: 0 0 85%;
-  scroll-snap-align: center;
+  scroll-snap-align: start;
 }
+
 .media-item img {
   width: 100%;
   border-radius: 4px;
 }
 
+.media-item video {
+  width: 100%;
+  border-radius: 4px; /* Matches your images */
+  display: block;
+}
 
 /* DESKTOP QUERIES */
 @media (min-width: 768px) {
