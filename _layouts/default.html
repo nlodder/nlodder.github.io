@@ -51,60 +51,62 @@
     });
 
     // 2. Media Scroller Logic
-    let isScrolling = false;
-    const container = scroller.closest('.project-media');
-    const dotsContainer = container?.querySelector('.scroller-dots');
-    const items = scroller.querySelectorAll('.media-item');
+    document.querySelectorAll('.media-scroller').forEach((scroller) => {
+      let isScrolling = false;
+      const container = scroller.closest('.project-media');
+      const dotsContainer = container?.querySelector('.scroller-dots');
+      const items = scroller.querySelectorAll('.media-item');
 
-    // Helper to get exact scroll distance between items
-    const getScrollStep = () => items[1].offsetLeft - items[0].offsetLeft;
+      // Helper to get exact scroll distance between items
+      const getScrollStep = () => {
+        if (items.length <= 1) return scroller.clientWidth;
+        return items[1].offsetLeft - items[0].offsetLeft;
+      };
 
-    // A. Click on dots to jump to image
-    if (dotsContainer) {
-      const dots = dotsContainer.querySelectorAll('.dot');
-      dots.forEach((dot, i) => {
-        dot.style.cursor = 'pointer'; // Make it look clickable
-        dot.addEventListener('click', () => {
-          const scrollStep = getScrollStep();
-          scroller.scrollTo({
-            left: i * scrollStep,
-            behavior: 'smooth'
+      // A. Click on dots to jump to image
+      if (dotsContainer) {
+        const dots = dotsContainer.querySelectorAll('.dot');
+        dots.forEach((dot, i) => {
+          dot.addEventListener('click', () => {
+            scroller.scrollTo({
+              left: i * getScrollStep(),
+              behavior: 'smooth'
+            });
           });
         });
-      });
-    }
+      }
 
-    // B. Wheel Scroll Logic (Desktop)
-    scroller.addEventListener('wheel', (evt) => {
-      if (window.innerWidth > 768) {
-        evt.preventDefault();
-        if (isScrolling) return;
+      // B. Wheel Scroll Logic (Desktop)
+      scroller.addEventListener('wheel', (evt) => {
+        if (window.innerWidth > 768) {
+          // Only prevent default if we are scrolling horizontally
+          if (Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
+            evt.preventDefault();
+            if (isScrolling) return;
 
-        const threshold = 15;
-        if (Math.abs(evt.deltaY) > threshold) {
-          isScrolling = true;
-          const direction = evt.deltaY > 0 ? 1 : -1;
-          const scrollStep = getScrollStep();
+            const threshold = 10;
+            if (Math.abs(evt.deltaY) > threshold) {
+              isScrolling = true;
+              const direction = evt.deltaY > 0 ? 1 : -1;
 
-          scroller.scrollBy({
-            left: scrollStep * direction,
-            behavior: 'smooth'
-          });
+              scroller.scrollBy({
+                left: getScrollStep() * direction,
+                behavior: 'smooth'
+              });
 
-          setTimeout(() => { isScrolling = false; }, 500);
+              setTimeout(() => { isScrolling = false; }, 500);
+            }
+          }
         }
-      }
-    }, { passive: false });
+      }, { passive: false });
 
-    // C. Update Dots on Scroll
-    scroller.addEventListener('scroll', () => {
-      if (!dotsContainer) return;
-      const dots = dotsContainer.querySelectorAll('.dot');
-      if (items.length > 1) {
-        const scrollStep = getScrollStep();
-        const index = Math.round(scroller.scrollLeft / scrollStep);
+      // C. Update Dots on Scroll
+      scroller.addEventListener('scroll', () => {
+        if (!dotsContainer || items.length <= 1) return;
+        const dots = dotsContainer.querySelectorAll('.dot');
+        const index = Math.round(scroller.scrollLeft / getScrollStep());
         dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
-      }
+      });
     });
   </script>
 </body>

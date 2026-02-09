@@ -200,8 +200,8 @@ body {
 .media-scroller {
   width: 100%;
   display: flex;
-  align-items: flex-end;
-  overflow-x: scroll;
+  align-items: flex-start;
+  overflow-x: auto;
   scroll-snap-type: x mandatory;
   gap: 20px;
   padding: 50px 10%;
