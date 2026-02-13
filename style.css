@@ -208,7 +208,7 @@ body {
   display: block;
 }
 
-.project-header h2 {
+.project-info h2 {
   font-family: var(--font-main);
   font-size: 2rem;
   color: var(--slate-dark);
@@ -270,7 +270,28 @@ body {
   .project-block {
     display: grid;
     grid-template-columns: 1.5fr 3.5fr;
-    padding: 60px 10%;
+    padding: 40px 10%;
+  }
+  .project-tools,
+  .project-skills {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 20px 0;  /* Space above/below the list */
+    display: flex;
+    flex-wrap: wrap;        /* Allows tags to wrap on small screens */
+    gap: 10px;              /* Space between tags */
+  }
+  .project-tools li,
+  .project-skills li {
+    font-family: var(--font-main);
+    font-size: 0.7rem;
+    color: var(--slate-dark);
+    border: 1px solid var(--slate-dark);
+    padding: 4px 12px;
+    border-radius: 20px; /* Makes them look like pills */
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.3s ease;
   }
   .project-media {
     position: sticky;
@@ -320,7 +341,6 @@ body {
     content: "" !important;
   }
 }
-
 footer {
   padding: 60px 20px;
   text-align: center;
@@ -357,29 +377,8 @@ footer {
   transform: translateY(-3px); /* Gentle lift effect */
 }
 footer p {
-  font-size: 0.8rem;
-  opacity: 0.8;
+  font-size: 0.9rem;
+  opacity: 0.6;
   margin-top: 10px;
   letter-spacing: 0.05em;
-}
-.project-tools,
-.project-skills {
-  list-style: none;
-  padding: 0;
-  margin: 10px 0 20px 0;  /* Space above/below the list */
-  display: flex;
-  flex-wrap: wrap;        /* Allows tags to wrap on small screens */
-  gap: 10px;              /* Space between tags */
-}
-.project-tools li,
-.project-skills li {
-  font-family: var(--font-main);
-  font-size: 0.7rem;
-  color: var(--slate-dark);
-  border: 1px solid var(--slate-dark);
-  padding: 4px 12px;
-  border-radius: 20px; /* Makes them look like pills */
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
-  transition: all 0.3s ease;
 }
