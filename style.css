@@ -1,7 +1,7 @@
 /* Color Palette & Variables */
 :root {
   --slate-dark: #4a4441;
-  --slate-light: #cfc3ba;
+  --slate-light: #e1d8d2;
   --accent-pink: #ff4d8d;
   --text-main: #2d2926;
   --white: #ffffff;
@@ -105,7 +105,7 @@ body {
   border: none;
   cursor: pointer;
   display: flex;
-  flex-direction: row-reverse; /* Put the character on the right of the text */
+  flex-direction: row-reverse;
   align-items: center;
   padding: 0;
   height: 40px;
@@ -116,7 +116,7 @@ body {
   color: var(--slate-dark);
   font-family: "Optima", sans-serif;
   font-weight: 300;
-  font-size: 2.2rem;
+  font-size: 2.5rem;
   line-height: 1;
   display: flex;
   align-items: center;
@@ -293,6 +293,14 @@ body {
     letter-spacing: 0.05em;
     transition: all 0.3s ease;
   }
+  .project-tool-header,
+  .project-skill-header {
+    font-size: 0.8rem;
+    text-transform: none;
+    border: none !important;
+    padding-right: 15px;
+  }
+
   .project-media {
     position: sticky;
     top: 40px;
