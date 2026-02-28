@@ -1,26 +1,332 @@
----
-layout: default
-title: Nathan Lodder's Portfolio Home Page
----
+<!DOCTYPE html>
+<html lang="en">
 
-<header class="hero">
-    <h1><span class="accent-text">.</span>Nathan Lodder</h1>
-    <p>passionate about robotics, physics, & the art of engineering</p>
-</header>
-<main class="landing-container">
-    <nav class="centered-menu">
-        <ul class="menu-list">
-            <li><a href="/projects/">projects</a></li>
-            <li><a href="https://www.linkedin.com/in/nathan-lodder/" target="_blank" class="social-link">
-                    <i class="fa-brands fa-linkedin-in"></i>
-                    <span>linkedin</span>
-                </a>
-            </li>
-            <li><a href="https://github.com/nlodder" target="_blank" class="social-link">
-                    <i class="fa-brands fa-github"></i>
-                    <span>github</span>
-                </a>
-            </li>
-        </ul>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>{{ page.title }}</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Optima, Iowan Old Style, Seravek, sans-serif%22 fill=%22%23ff4d8d%22>N</text></svg>">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+    <nav class="set-menu">
+        <button class="menu-toggle" aria-label="Toggle Menu">
+            <span class="toggle-char">&lt;</span>
+            <div class="menu-content">
+                <ul class="menu-links">
+                    <li><a href="/">home</a></li>
+                    <li><a href="/projects/">projects</a></li>
+                </ul>
+            </div>
+        </button>
     </nav>
-</main>
+
+    <div class="page-wrapper">
+        <header class="hero">
+            <h1>Nathan Lodder</h1>
+            <p>passionate about robotics, physical and mathematical modelling, and human-machine interfacing</p>
+        </header>
+        <main class="landing-container">
+            <nav class="centered-menu">
+                <ul class="menu-list">
+                    <li><a href="https://www.linkedin.com/in/nathan-lodder/" target="_blank" class="social-link">
+                            <i class="fa-brands fa-linkedin-in"></i>
+                            <span>linkedin</span>
+                        </a>
+                    </li>
+                    <li><a href="https://github.com/nlodder" target="_blank" class="social-link">
+                            <i class="fa-brands fa-github"></i>
+                            <span>github</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            <section class="project-block">
+                <div class="project-media">
+                    <div class="media-scroller">
+                        <figure class="media-item">
+                            <video autoplay muted loop playsinline poster="/assets/images/PetRescDump.jpeg">
+                                <source src="/assets/videos/PetRescRobotTwoPet.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <figcaption>01. Robot collecting pets</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/PetRescSide.jpeg" alt="Perspective view of robot" loading="lazy">
+                            <figcaption>02. Perspective View</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/PetRescDump.jpeg" alt="Robot collecting pet" loading="lazy">
+                            <figcaption>03. Robot Collecting Pet</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/PetRescSide2.jpeg" alt="Side view of robot" loading="lazy">
+                            <figcaption>04. Side View</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="scroller-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-header">Pet Rescue Robot</h2>
+                    <ul class="project-tools">
+                        <li class="project-tool-header">Tools</li>
+                        <li>C++</li>
+                        <li>ESP32</li>
+                        <li>LiDar Sensors</li>
+                        <li>Magnetometer Sensors</li>
+                        <li>Servo Motors</li>
+                        <li>OnShape</li>
+                    </ul>
+                    <ul class="project-skills">
+                        <li class="project-skill-header">Skills</li>
+                        <li>Object Oriented Programming</li>
+                        <li>3D CAD</li>
+                        <li>Circuit Design</li>
+                        <li>Sensor Characterization</li>
+                        <li>Prototyping</li>
+                    </ul>
+                    <p class="project-description">
+                        As part of a team of four, I designed, built, and competed with an autonomous robot capable
+                        of seeking out and rescuing small stuffed animals (“pets”) from an obstacle-filled environment.
+                        Our robot placed 2nd out of 15 teams in the final course competition.<br><br>
+
+                        The challenge was to engineer a robot that could navigate a defined course and identify,
+                        collect,
+                        and deliver seven pets to a designated safe zone. The pets were placed in varied and challenging
+                        positions: behind obstructions, on top of pedestals, in corners, and one in an open area. Each
+                        pet
+                        was marked with a small magnet for detection.<br><br>
+
+                        Our solution integrated a range of hardware and control systems:<br>
+                        - LiDAR for initial target detection and navigation support<br>
+                        - Infrared reflectance sensor array in a PID feedback loop for line-following navigation<br>
+                        - Dual triple-axis magnetometers to guide the robotic claw with precision toward magnetic
+                        targets<br>
+                        - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control
+                        components<br><br>
+
+                        The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and
+                        robotic
+                        arm were built from laser-cut hardboard and 3D-printed PLA components.
+                    </p>
+                </div>
+            </section>
+            <section class="project-block">
+                <div class="project-media">
+                    <div class="media-scroller">
+                        <figure class="media-item">
+                            <img src="/assets/images/vexbot/BallCollRob4Balls.jpeg" alt="Vexbot holding four balls"
+                                loading="lazy">
+                            <figcaption>01. Balls Collected</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/vexbot/BallCollRobFront.jpeg" alt="Front of Vexbot" loading="lazy">
+                            <figcaption>02. Front View</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/vexbot/BallCollRob-P1.jpeg" alt="Perspective view of Vexbot"
+                                loading="lazy">
+                            <figcaption>03. Perspective View</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/vexbot/BallCollRob-P2.jpeg" alt="Perspective view of Vexbot"
+                                loading="lazy">
+                            <figcaption>04. Perspective View</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="scroller-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-header">Vexbot</h2>
+                    <ul class="project-tools">
+                        <li class="project-tool-header">Tools</li>
+                        <li>C++</li>
+                        <li>Vex Vision Sensors</li>
+                        <li>Vex Motors</li>
+                        <li>Vex Distance Sensors</li>
+                    </ul>
+                    <ul class="project-skills">
+                        <li class="project-skill-header">Skills</li>
+                        <li>Object-Oriented Programming</li>
+                        <li>Sensor Characterization</li>
+                        <li>Prototyping</li>
+                    </ul>
+                    <p class="project-description">
+                        I designed and built a Vexbot that uses vision sensors' color recognition cability to identify
+                        and
+                        collect coloured balls. The robot would then use the same sensor to scan for and
+                        identify a delivery location, and would use a distance sensor to detect when
+                        it was close enough to drop off the balls.
+                    </p>
+                </div>
+            </section>
+            <section class="project-block">
+                <div class="project-media">
+                    <div class="media-scroller">
+                        <figure class="media-item">
+                            <video autoplay muted loop playsinline poster="/assets/images/plot-plugin/code.png">
+                                <source src="/assets/videos/vid.mp4" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <figcaption>01. Demo of plugin</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/plot-plugin/plot.png" alt="dark mode embedded plot in Obsidian"
+                                loading="lazy">
+                            <figcaption>02. Dark mode interactive plot</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/plot-plugin/plot-light.png"
+                                alt="light mode embedded plot in Obsidian" loading="lazy">
+                            <figcaption>03. Light mode interactive plot</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/plot-plugin/code.png" alt="code block for plot in Obsidian"
+                                loading="lazy">
+                            <figcaption>04. Code block for plot in Obsidian</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="scroller-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-header">Obsidian Interactive Plot Plugin</h2>
+                    <ul class="project-tools">
+                        <li class="project-tool-header">Tools</li>
+                        <li>CSS</li>
+                        <li>JavaScript</li>
+                        <li>Python</li>
+                    </ul>
+                    <ul class="project-skills">
+                        <li class="project-skill-header">Skills</li>
+                        <li>Object-Oriented Programming</li>
+                        <li>Event-Driven Architecture</li>
+                        <li>Inter-Process Communication</li>
+                        <li>Resource Management</li>
+                    </ul>
+                    <p class="project-description">
+                        I developed a custom Obsidian plugin that integrates a live Python
+                        execution environment directly into Markdown notes. Designed to replace
+                        static hand-drawn plots with interactive data visualizations, the plugin
+                        leverages Node.js child processes to bridge Obsidian with the
+                        Python/Plotly ecosystem. It features a custom CSS-to-Python theme engine
+                        that dynamically injects Obsidian's UI variables into the rendering pipeline,
+                        ensuring that plots automatically adapt their typography and color palettes
+                        during theme shifts (see photos) for a native user experience.<br><br>
+                        I wrote this plugin to improve my knowledge management environment and engineering
+                        and learning workflows. I plan to create more quality of life features such
+                        as quick-plot shortcuts and other UI shortcuts (slider, variable manipulators etc.)
+                        as time permits.
+                    </p>
+                </div>
+            </section>
+        </main>
+        <footer>
+            <p>2026 | Nathan Lodder</p>
+        </footer>
+    </div>
+
+    <script>
+        // 1. Set Menu Logic
+        const menuBtn = document.querySelector('.menu-toggle');
+        const toggleChar = menuBtn.querySelector('.toggle-char');
+
+        menuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = menuBtn.classList.toggle('is-open');
+
+            // Toggle the lock class on the body
+            document.body.classList.toggle('menu-open', isOpen);
+            toggleChar.textContent = isOpen ? '>' : '<';
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menuBtn.contains(e.target)) {
+                menuBtn.classList.remove('is-open');
+                document.body.classList.remove('menu-open');
+                toggleChar.textContent = '<';
+            }
+        });
+
+        // 2. Media Scroller Logic
+        document.querySelectorAll('.media-scroller').forEach((scroller) => {
+            let isScrolling = false;
+            const container = scroller.closest('.project-media');
+            const dotsContainer = container?.querySelector('.scroller-dots');
+            const items = scroller.querySelectorAll('.media-item');
+
+            // Helper to get exact scroll distance between items
+            const getScrollStep = () => {
+                if (items.length <= 1) return scroller.clientWidth;
+                return items[1].offsetLeft - items[0].offsetLeft;
+            };
+
+            // A. Click on dots to jump to image
+            if (dotsContainer) {
+                const dots = dotsContainer.querySelectorAll('.dot');
+                dots.forEach((dot, i) => {
+                    dot.addEventListener('click', () => {
+                        scroller.scrollTo({
+                            left: i * getScrollStep(),
+                            behavior: 'smooth'
+                        });
+                    });
+                });
+            }
+
+            // B. Wheel Scroll Logic (Desktop)
+            scroller.addEventListener('wheel', (evt) => {
+                if (window.innerWidth > 768) {
+                    // Only prevent default if we are scrolling horizontally
+                    if (Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
+                        evt.preventDefault();
+                        if (isScrolling) return;
+
+                        const threshold = 10;
+                        if (Math.abs(evt.deltaY) > threshold) {
+                            isScrolling = true;
+                            const direction = evt.deltaY > 0 ? 1 : -1;
+
+                            scroller.scrollBy({
+                                left: getScrollStep() * direction,
+                                behavior: 'smooth'
+                            });
+
+                            setTimeout(() => { isScrolling = false; }, 500);
+                        }
+                    }
+                }
+            }, { passive: false });
+
+            // C. Update Dots on Scroll
+            scroller.addEventListener('scroll', () => {
+                if (!dotsContainer || items.length <= 1) return;
+                const dots = dotsContainer.querySelectorAll('.dot');
+                const index = Math.round(scroller.scrollLeft / getScrollStep());
+                dots.forEach((dot, i) => dot.classList.toggle('active', i === index));
+            });
+        });
+    </script>
+</body>
+
+</html>
