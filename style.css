@@ -101,6 +101,7 @@ body::-webkit-scrollbar {
 /* Hover Effect */
 .social-link:hover {
   color: var(--accent-pink);
+  scale: 1.05;
 }
 /* PROJECT BLOCKS */
 .project-block {
