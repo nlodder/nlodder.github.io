@@ -15,8 +15,8 @@
 
     <div class="page-wrapper">
         <header class="hero">
-            <h1>Nathan Lodder</h1>
-            <p>passionate about robotics, physical and mathematical modelling, and human-machine interfacing</p>
+            <h1>Nathan Lodder</h1>robotSum/
+            <p>I'm passionate about robotics, physical and mathematical modelling, and human-computer interfacing</p>
         </header>
         <main class="landing-container">
             <nav class="centered-menu">
@@ -33,26 +33,27 @@
                     </li>
                 </ul>
             </nav>
+            <!-- PET RESCUE ROBOT PROJECT -->
             <section class="project-block">
                 <div class="project-media">
                     <div class="media-scroller">
                         <figure class="media-item">
-                            <video autoplay muted loop playsinline poster="/assets/images/PetRescDump.jpeg">
-                                <source src="/assets/videos/PetRescRobotTwoPet.mp4" type="video/mp4">
+                            <video autoplay muted loop playsinline poster="/assets/images/robotSum/PetRescDump.jpeg">
+                                <source src="/assets/videos/robotSum/PetRescRobotTwoPet.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                             <figcaption>1. Robot collecting pets</figcaption>
                         </figure>
                         <figure class="media-item">
-                            <img src="/assets/images/PetRescSide.jpeg" alt="Perspective view of robot" loading="lazy">
+                            <img src="/assets/images/robotSum/PetRescSide.jpeg" alt="Perspective view of robot" loading="lazy">
                             <figcaption>2. Perspective View</figcaption>
                         </figure>
                         <figure class="media-item">
-                            <img src="/assets/images/PetRescDump.jpeg" alt="Robot collecting pet" loading="lazy">
+                            <img src="/assets/images/robotSum/PetRescDump.jpeg" alt="Robot collecting pet" loading="lazy">
                             <figcaption>3. Robot Collecting Pet</figcaption>
                         </figure>
                         <figure class="media-item">
-                            <img src="/assets/images/PetRescSide2.jpeg" alt="Side view of robot" loading="lazy">
+                            <img src="/assets/images/robotSum/PetRescSide2.jpeg" alt="Side view of robot" loading="lazy">
                             <figcaption>4. Side View</figcaption>
                         </figure>
                     </div>
@@ -82,33 +83,94 @@
                         <li>Circuit Design</li>
                         <li>Sensor Characterization</li>
                         <li>Prototyping</li>
+                        <li>I2C Protocol</li>
+                        <li>UART Protocol</li>
                     </ul>
                     <p class="project-description">
                         As part of a team of four, I designed, built, and competed with an autonomous robot capable
                         of seeking out and rescuing small stuffed animals (“pets”) from an obstacle-filled environment.
                         Our robot placed 2nd out of 15 teams in the final course competition.<br><br>
 
-                        The challenge was to engineer a robot that could navigate a defined course and identify,
-                        collect,
-                        and deliver seven pets to a designated safe zone. The pets were placed in varied and challenging
-                        positions: behind obstructions, on top of pedestals, in corners, and one in an open area. Each
-                        pet
-                        was marked with a small magnet for detection.<br><br>
-
-                        Our solution integrated a range of hardware and control systems:<br>
+                        We integrated a range of hardware and control systems:<br>
                         - LiDAR for initial target detection and navigation support<br>
                         - Infrared reflectance sensor array in a PID feedback loop for line-following navigation<br>
                         - Dual triple-axis magnetometers to guide the robotic claw with precision toward magnetic
                         targets<br>
                         - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control
-                        components<br><br>
+                        components<br>
+                        - I2C and UART Protocols for sensor and inter-microcontroller communication respectivley<br><br>
 
-                        The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and
-                        robotic
-                        arm were built from laser-cut hardboard and 3D-printed PLA components.
+                        The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and 
+                        arm were built from laser-cut hardboard and 3D-printed PLA components designed in OnShape.
                     </p>
                 </div>
             </section>
+            <!-- DESIGN TEAM PROJECT -->
+            <section class="project-block">
+                <div class="project-media">
+                    <div class="media-scroller">
+                        <figure class="media-item">
+                            <video autoplay muted loop playsinline poster="/assets/images/enable/bannerOverall.jpeg">
+                                <source src="/assets/videos/enable/overallSetupLite.mov" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <figcaption>1. Sensor overlay on camera feed prototype setup</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <video autoplay muted loop playsinline poster="/assets/images/enable/bannerUltra.jpeg">
+                                <source src="/assets/videos/enable/ultra.mov" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                            <figcaption>2. Sensor overlay on camera feed prototype setup</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enable/setup.jpeg" alt="Raspberry Pi setup" loading="lazy">
+                            <figcaption>3. Raspberry Pi and ultrasonic sensors prototyping</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enable/guiOverlay.jpeg" alt="GUI overlay" loading="lazy">
+                            <figcaption>4. Distance data overlay on camera feed</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="scroller-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-header">Wheelchair Backup Assist Proximity Overlay</h2>
+                    <ul class="project-tools">
+                        <li class="project-tool-header">Tools</li>
+                        <li>Python</li>
+                        <li>Raspberry Pi</li>
+                        <li>Raspberry Pi OS Linux</li>
+                        <li>Ultrasonic Sensors</li>
+                        <li>Data Processing</li>
+                    </ul>
+                    <ul class="project-skills">
+                        <li class="project-skill-header">Skills</li>
+                        <li>Software Construction</li>
+                        <li>Command Line Interfacing</li>
+                        <li>Sensor Characterization</li>
+                        <li>Prototyping</li>
+                    </ul>
+                    <p class="project-description">
+                        As part of the Electrical Sub-team at UBC BEST-Enable I programmed Raspberry Pi
+                        to stream video from a Picam to a small monitor with a proximity-indicator 
+                        overlay to provide client in electric wheelchair with visibility and proximity
+                        feedback when reversing in tight environments.<br><br>
+                        This was my first introduction to working on a linux system and debugging 
+                        in the command line where our primary struggle was interfacing with the 
+                        external display to create a clean and effective stream for our client. We
+                        overcame this by looking through the openCV documentation to find potential
+                        solutions, landing on the Python OpenCV <a href="https://docs.opencv.org/4.x/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b">namedWindow()</a> method.
+                    </p>
+                </div>
+            </section>
+            <!-- VEXBOT PROJECT-->
             <section class="project-block">
                 <div class="project-media">
                     <div class="media-scroller">
@@ -164,28 +226,29 @@
                     </p>
                 </div>
             </section>
+            <!-- OBSIDIAN PLUGIN -->
             <section class="project-block">
                 <div class="project-media">
                     <div class="media-scroller">
                         <figure class="media-item">
-                            <video autoplay muted loop playsinline poster="/assets/images/plot-plugin/code.png">
-                                <source src="/assets/videos/vid.mp4" type="video/mp4">
+                            <video autoplay muted loop playsinline poster="/assets/images/obsidian/code.png">
+                                <source src="/assets/videos/obsidian/vid.mp4" type="video/mp4">
                                 Your browser does not support the video tag.
                             </video>
                             <figcaption>1. Demo of plugin</figcaption>
                         </figure>
                         <figure class="media-item">
-                            <img src="/assets/images/plot-plugin/plot.png" alt="dark mode embedded plot in Obsidian"
+                            <img src="/assets/images/obsidian/plot.png" alt="dark mode embedded plot in Obsidian"
                                 loading="lazy">
                             <figcaption>2. Dark mode interactive plot</figcaption>
                         </figure>
                         <figure class="media-item">
-                            <img src="/assets/images/plot-plugin/plot-light.png"
+                            <img src="/assets/images/obsidian/plot-light.png"
                                 alt="light mode embedded plot in Obsidian" loading="lazy">
                             <figcaption>3. Light mode interactive plot</figcaption>
                         </figure>
                         <figure class="media-item">
-                            <img src="/assets/images/plot-plugin/code.png" alt="code block for plot in Obsidian"
+                            <img src="/assets/images/obsidian/code.png" alt="code block for plot in Obsidian"
                                 loading="lazy">
                             <figcaption>4. Code block for plot in Obsidian</figcaption>
                         </figure>
