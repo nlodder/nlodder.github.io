@@ -115,6 +115,103 @@
                     </p>
                 </div>
             </section>
+            <!-- ROBOTICS SIMULATOIN -->
+            <section class="project-block">
+                <div class="project-media">
+                    <div class="media-scroller">
+                        <figure class="media-item">
+                            <img src="/assets/images/enph353/debugWindow.png" alt="Navigation debugging view" loading="lazy">
+                            <figcaption>1. Navigation debugging view</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enph353/rpyControl.png" alt="Roll and pitch control flow" loading="lazy">
+                            <figcaption>2. Roll and pitch control flow</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enph353/flyingDrone.png" alt="Drone in simulation" loading="lazy">
+                            <figcaption>3. Drone in simulation</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enph353/blueMask.png" alt="Image processing-blue mask" loading="lazy">
+                            <figcaption>4. Image processing-blue mask</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enph353/morphology.png" alt="Image processing-morphological closing" loading="lazy">
+                            <figcaption>5. Image processing-morphological closing</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/enph353/signHull.png" alt="Image processing-contours & convex hull" loading="lazy">
+                            <figcaption>6. Image processing-contours & convex hull</figcaption>
+                        </figure>
+                    </div>
+                    <div class="scroller-dots">
+                        <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-header">Simulated Drone Control</h2>
+                    <ul class="project-tools">
+                        <li class="project-tool-header">Tools</li>
+                        <li>Python</li>
+                        <li>OpenCV</li>
+                        <li>ROSa</li>
+                        <li>Gazebo</li>
+                        <li>OnShape</li>
+                        <li>GitHub</li>
+                    </ul>
+                    <ul class="project-skills">
+                        <li class="project-skill-header">Skills</li>
+                        <li>Networking</li>
+                        <li>Bash Scripting</li>
+                        <li>Drone Control</li>
+                        <li>Version Control</li>
+                    </ul>
+                    <a href="https://github.com/nlodder/enph353-drone-controllers" target="_blank" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                        <span>drone controllers</span>
+                    </a>
+                    <a href="https://github.com/nlodder/enph353-drone-bringup" target="_blank" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                        <span>drone launcher</span>
+                    </a>
+                    <a href="https://github.com/nlodder/enph353-drone-desc" target="_blank" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                        <span>drone definition</span>
+                    </a>
+                    <a href="https://github.com/nlodder/enph353-drone-msgs" target="_blank" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                        <span>drone message</span>
+                    </a>
+                    <p class="project-description">
+                        Created two-drone team to navigate simulated environment to collect data from signs in ROS/Gazebo.
+                        <br><br>
+                        Controller nodes were implemented in Python and communicated via rostopics. For high-frequency inter-drone communication
+                        I created a custom lightweight message type (see drone message repository). Controllers and stabilizers would
+                        send movement demands to a command bridge node which would apply all requested forces to the drone. This was to
+                        isolate ownership of force application to a single node and reduce the number of service calls to Gazebo's 
+                        costly ApplyBodyWrench service.
+                        <br><br>
+                        Roll and pitch stabilization was handled by a node that took inputs from an IMU link on the drone body and published
+                        required correction velocities (to be read by the command bridge) after passing the roll, pitch and angular velocity
+                        values through a PID function.
+                        <br><br>
+                        I processed the front camera feed with OpenCV for navigation. I used the difference of the horizontal centroid of
+                        blue signs from the centre of the frame as the error for left/right strafing and yaw PID controllers. For forward/backward movement
+                        I used the relative height of the sign in the frame, pushing the drone back if the sign was too large in frame, and forward if the sign
+                        was too small in frame, also through a PID function.
+                        <br><br>
+                        The base drone design was performed in OnShape and converted to a URDF file through the 
+                        <a href="https://onshape-to-robot.readthedocs.io/en/latest/">onshape-to-robot plugin</a>. I wrote a python script to convert
+                        this .urdf file to a .xacro file for cleanliness and better handling of repeat parts. This file was then modified per developed
+                        needs in controller development (adding sensors, modifying drone colors etc.).
+                    </p>
+                </div>
+            </section>
             <!-- DESIGN TEAM PROJECT -->
             <section class="project-block">
                 <div class="project-media">
