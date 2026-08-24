@@ -115,6 +115,50 @@
                     </p>
                 </div>
             </section>
+            <!-- BASS GUITAR COMPANION -->
+            <section class="project-block">
+                <div class="project-media">
+                    <div class="media-scroller">
+                        <figure class="media-item">
+                            <img src="/assets/images/bassGuitar/pwrSharing.png" alt="Load sharing and power path management schematic" loading="lazy">
+                            <figcaption>1. Load Sharing & Power Path Management Schematic</figcaption>
+                        </figure>
+                    </div>
+
+                    <div class="scroller-dots">
+                        <span class="dot active"></span>
+                    </div>
+                </div>
+                <div class="project-info">
+                    <h2 class="project-header">Bass Guitar Companion</h2>
+                    <ul class="project-tools">
+                        <li class="project-tool-header">Tools</li>
+                        <li>EasyEDA</li>
+                        <li>ESP32</li>
+                    </ul>
+                    <ul class="project-skills">
+                        <li class="project-skill-header">Skills</li>
+                        <li>Power Systems Design</li>
+                        <li>Circuit Design</li>
+                        <li>Prototyping</li>
+                        <li>I2C Protocol</li>
+                    </ul>
+                    <p class="project-description">
+                        I am designing a companion system to my bass guitar that will allow me to control basic DAW functions remotely, and to track playing metrics.
+                        The primary goal of this project is to learn safe power systems design for consumer-safe electronics.<br><br>
+                        
+                        Initial inspiration for load sharing system from <a href="https://ww1.microchip.com/downloads/en/AppNotes/01149a.pdf">this document</a>
+                        by Brian Chu at Microchip Technology Inc. I elected to replace the function of the Schottky diode (D1) with the LM66200 ORing Controller
+                        to reduce power loss and provide a stable voltage rail to the ESP32 microcontroller. I also replaced the P-MOSFET (Q1) used to isolate the
+                        battery in Brian Chu's design with an N-MOSFET used to enable the boost converter tasked with boosting the battery voltage to a stable 5V.
+                        With this boost converter disabled, which occurs during charging when the usb-c cable is connected, the battery is isolated from the load
+                        with redundant back-current protection from the LM66200 ORing controller and the TPS61022 boost converter.<br><br>
+                        
+                        I am currently in the schematic design phase, working on control inputs and auxilliary system functions. PCB design, enclosure design, and
+                        assembly will follow once the schematic is complete and tested through simulation!
+                    </p>
+                </div>
+            </section>
             <!-- ROBOTICS SIMULATOIN -->
             <section class="project-block">
                 <div class="project-media">

@@ -3,6 +3,7 @@
   --slate-dark: #4a4441;
   --slate-light: #e1d8d2;
   --accent-pink: #ff4d8d;
+  --accent-blue: #555f7f;
   --text-main: #2d2926;
   --white: #ffffff;
   --font-main: "Optima", "Iowan Old Style", "Seravek", sans-serif;
@@ -40,7 +41,7 @@ body::-webkit-scrollbar {
   color: var(--slate-dark);
 }
 .hero p {
-  color: var(--accent-pink);
+  color: var(--accent-blue);
   font-size: 1.2rem;
   letter-spacing: 0.1em;
 }
@@ -205,7 +206,7 @@ body::-webkit-scrollbar {
 }
 .dot.active {
   opacity: 1;
-  background-color: var(--accent-pink);
+  background-color: var(--accent-blue);
   scale: 2;
 }
 /* DESKTOP QUERIES */
