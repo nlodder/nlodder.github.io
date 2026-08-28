@@ -108,7 +108,7 @@
                         targets<br>
                         - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control
                         components<br>
-                        - I2C and UART Protocols for sensor and inter-microcontroller communication respectivley<br><br>
+                        - I2C and UART Protocols for sensor and inter-microcontroller communication respectively<br><br>
 
                         The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and 
                         arm were built from laser-cut hardboard and 3D-printed PLA components designed in OnShape.
@@ -139,6 +139,7 @@
 
                     <div class="scroller-dots">
                         <span class="dot active"></span>
+                        <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
                     </div>
@@ -507,6 +508,7 @@
         // 2. Media Scroller Logic
         document.querySelectorAll('.media-scroller').forEach((scroller) => {
             let isScrolling = false;
+            let queuedDirection = 0; // Remembers intent that arrives mid-animation instead of dropping it
             const container = scroller.closest('.project-media');
             const dotsContainer = container?.querySelector('.scroller-dots');
             const items = scroller.querySelectorAll('.media-item');
@@ -531,25 +533,40 @@
             }
 
             // B. Wheel Scroll Logic (Desktop)
+            // Steps one item per animation, queuing the latest direction that
+            // arrives mid-scroll instead of dropping it -- lets a fast, continuous
+            // scroll gesture cascade through items instead of stalling after the first.
+            const stepScroll = (direction) => {
+                isScrolling = true;
+                scroller.scrollBy({
+                    left: getScrollStep() * direction,
+                    behavior: 'smooth'
+                });
+                setTimeout(() => {
+                    isScrolling = false;
+                    if (queuedDirection !== 0) {
+                        const next = queuedDirection;
+                        queuedDirection = 0;
+                        stepScroll(next);
+                    }
+                }, 350);
+            };
+
             scroller.addEventListener('wheel', (evt) => {
                 if (window.innerWidth > 768) {
                     // Only prevent default if we are scrolling horizontally
                     if (Math.abs(evt.deltaY) > Math.abs(evt.deltaX)) {
                         evt.preventDefault();
-                        if (isScrolling) return;
 
-                        const threshold = 10;
-                        if (Math.abs(evt.deltaY) > threshold) {
-                            isScrolling = true;
-                            const direction = evt.deltaY > 0 ? 1 : -1;
+                        const threshold = 5;
+                        if (Math.abs(evt.deltaY) <= threshold) return;
+                        const direction = evt.deltaY > 0 ? 1 : -1;
 
-                            scroller.scrollBy({
-                                left: getScrollStep() * direction,
-                                behavior: 'smooth'
-                            });
-
-                            setTimeout(() => { isScrolling = false; }, 500);
+                        if (isScrolling) {
+                            queuedDirection = direction;
+                            return;
                         }
+                        stepScroll(direction);
                     }
                 }
             }, { passive: false });
