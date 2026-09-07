@@ -16,7 +16,9 @@
     <div class="page-wrapper">
         <header class="hero">
             <h1>Nathan Lodder</h1>
-            <p>Robotics, physical and mathematical modelling, and human-computer interfacing</p>
+            <p>Thank you for visiting my portfolio! I am building skills in robotics, low-power electrical engineering, and control systems. 
+                If you're here I'd love to meet you! Connect with me on LinkedIn and let's chat about how I can help your team or project succeed.
+            </p>
         </header>
         <main class="landing-container">
             <nav class="centered-menu">
@@ -135,10 +137,15 @@
                             <img src="/assets/images/bassGuitar/system.png" alt="Control system schematic" loading="lazy">
                             <figcaption>4. Control System Schematic</figcaption>
                         </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/bassGuitar/bodeAttempt1.png" alt="Bass Output Processing Circuit Bode Plot" loading="lazy">
+                            <figcaption>5. Bass Output Processing Circuit Bode Plot</figcaption>
+                        </figure>
                     </div>
 
                     <div class="scroller-dots">
                         <span class="dot active"></span>
+                        <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
@@ -159,9 +166,11 @@
                         <li>I2C Protocol</li>
                     </ul>
                     <p class="project-description">
-                        I am designing a companion system to my bass guitar that will allow me to control basic DAW functions remotely, and to track playing metrics.
-                        The primary goal of this project is to learn safe power systems design for consumer-safe electronics.<br><br>
+                        I am designing a companion system to my bass guitar that will allow me to control basic DAW functions remotely and track playing metrics.
+                        The primary goals of this project are to learn power systems design for consumer-safe electronics and process noisy AC signals for
+                        coherant interpretation.<br><br>
                         
+                        <b>Power System Design</b><br>
                         Initial inspiration for load sharing system from <a href="https://ww1.microchip.com/downloads/en/AppNotes/01149a.pdf">this document</a>
                         by Brian Chu at Microchip Technology Inc. I elected to replace the function of the Schottky diode (D1) with the LM66200 ORing Controller
                         to reduce power loss and provide a stable voltage rail to the ESP32 microcontroller. I also replaced the P-MOSFET (Q1) used to isolate the
@@ -169,8 +178,16 @@
                         With this boost converter disabled, which occurs during charging when the usb-c cable is connected, the battery is isolated from the load
                         with redundant back-current protection from the LM66200 ORing controller and the TPS61022 boost converter.<br><br>
                         
-                        I am currently in the schematic design phase, working on control inputs and auxilliary system functions. PCB design, enclosure design, and
-                        assembly will follow once the schematic is complete and tested through simulation!
+                        <b>Tuner Design</b><br>
+                        To permit tuning the bass down to a B0 (30.87Hz), the tuner circuit will be designed for frequencies from 25Hz -> 135Hz where the
+                        frequency range to which the strings will be tuned is from B0 (30.87Hz) to G2 (98.00Hz). To process the raw bass output for input
+                        to the ESP32's SAR ADC, I will put it through a band-pass filter to remove noise, attenuate it, and apply a DC offset to ensure
+                        the signal is within the optimal voltage range for the SAR ADC (100mV - 900mV). I am currently resolving an issue with excessive
+                        signal attenuation (nearly 86% versus target 75% attenuation) through the combined signal processing circuit, as can be seen in
+                        the 5th image.<br><br>
+                        
+                        I am currently in the schematic design phase. PCB design, enclosure design, and assembly will follow once the schematic is complete
+                        and tested through simulation!
                     </p>
                 </div>
             </section>
