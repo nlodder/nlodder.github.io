@@ -141,10 +141,15 @@
                             <img src="/assets/images/bassGuitar/bodeAttempt1.png" alt="Bass Output Processing Circuit Bode Plot" loading="lazy">
                             <figcaption>5. Bass Output Processing Circuit Bode Plot</figcaption>
                         </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/bassGuitar/bodeAttempt33.png" alt="4th-Order vs 2nd-Order Active Bandpass Filter Comparison" loading="lazy">
+                            <figcaption>6. 4th-Order vs 2nd-Order Active Bandpass Filter Comparison</figcaption>
+                        </figure>
                     </div>
 
                     <div class="scroller-dots">
                         <span class="dot active"></span>
+                        <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
@@ -182,9 +187,14 @@
                         To permit tuning the bass down to a B0 (30.87Hz), the tuner circuit will be designed for frequencies from 25Hz -> 135Hz where the
                         frequency range to which the strings will be tuned is from B0 (30.87Hz) to G2 (98.00Hz). To process the raw bass output for input
                         to the ESP32's SAR ADC, I will put it through a band-pass filter to remove noise, attenuate it, and apply a DC offset to ensure
-                        the signal is within the optimal voltage range for the SAR ADC (100mV - 900mV). I am currently resolving an issue with excessive
-                        signal attenuation (nearly 86% versus target 75% attenuation) through the combined signal processing circuit, as can be seen in
-                        the 5th image.<br><br>
+                        the signal is within the optimal voltage range for the SAR ADC (100mV - 900mV). To resolve excessive signal attenuation at the boundaries
+                        of the 25Hz - 135Hz frequency band, I am designing for maximum 5% attenuation at those edge frequencies rather than treating them
+                        as the filter's cutoff frequencies (with 29.3% attenuation).<br><br>
+
+                        I've designed a 4th-order active RC-OpAmp bandpass filter to improve the selectivity of the filter (when compared to passive RC
+                        or RLC bandpass filters) with fewer components to resolve the gentle roll-off associated with passive RC/RLC bandpass filters.
+                        See figure 5 for a comparison between a 2nd-order 4th-order active bandpass filter, where we see increased selectivity in the
+                        4th-order filter with a sharper rolloff.
                         
                         I am currently in the schematic design phase. PCB design, enclosure design, and assembly will follow once the schematic is complete
                         and tested through simulation!
