@@ -106,11 +106,9 @@
                         We integrated a range of hardware and control systems:<br>
                         - LiDAR for initial target detection and navigation support<br>
                         - Infrared reflectance sensor array in a PID feedback loop for line-following navigation<br>
-                        - Dual triple-axis magnetometers to guide the robotic claw toward magnetic
-                        targets<br>
-                        - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control
-                        components<br>
-                        - I2C and UART Protocols for sensor and inter-microcontroller communication respectively<br><br>
+                        - Dual triple-axis magnetometers to guide the robotic claw toward magnetic targets<br>
+                        - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control components<br>
+                        - I2C and UART Protocols for sensor-microcontroller and inter-microcontroller communication respectively<br><br>
 
                         The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and 
                         arm were built from laser-cut hardboard and 3D-printed PLA components designed in OnShape.
@@ -286,12 +284,13 @@
                         required correction velocities (to be read by the command bridge) after passing the roll, pitch and angular velocity
                         values through a PID function.
                         <br><br>
-                        I processed the front camera feed with OpenCV for navigation. I used the difference of the horizontal centroid of
-                        blue signs from the centre of the frame as the error for left/right strafing and yaw PID controllers. For forward/backward movement
-                        I used the relative height of the sign in the frame, pushing the drone back if the sign was too large in frame, and forward if the sign
-                        was too small in frame, also through a PID function.
+                        The front camera feed was processed with OpenCV for navigation. The difference of the horizontal centroid of blue signs
+                        from the centre of the frame was used as the error for left/right strafing and yaw PID controllers. For forward/backward
+                        movement I used the relative height of the sign in the frame, pushing the drone back if the sign was too large in frame,
+                        and forward if it was too small. This error was also passed through a PID controller to determine the forward/backward
+                        velocity demand.
                         <br><br>
-                        The base drone design was performed in OnShape and converted to a URDF file through the 
+                        The base drone design was created in OnShape and converted to a URDF file through the 
                         <a href="https://onshape-to-robot.readthedocs.io/en/latest/">onshape-to-robot plugin</a>. I wrote a python script to convert
                         this .urdf file to a .xacro file for cleanliness and better handling of repeat parts. This file was then modified per developed
                         needs in controller development (adding sensors, modifying drone colors etc.).
