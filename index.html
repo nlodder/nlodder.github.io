@@ -16,7 +16,7 @@
     <div class="page-wrapper">
         <header class="hero">
             <h1>Nathan Lodder</h1>
-            <p>Thank you for visiting my portfolio! I am building skills in robotics, low-power electrical engineering, and control systems. 
+            <p>Thank you for visiting my portfolio! I am building skills in robotics, low-power electrical engineering, and control systems.
                 If you're here I'd love to meet you! Connect with me on LinkedIn and let's chat about how I can help your team or project succeed.
             </p>
         </header>
@@ -51,25 +51,40 @@
                             <figcaption>2. Perspective View</figcaption>
                         </figure>
                         <figure class="media-item">
+                            <img src="/assets/images/robotSum/claw-v6.png" alt="Claw Mount & Claw Part Final Design in OnShape" loading="lazy">
+                            <figcaption>3. Claw Mount & Claw Part Final Design in OnShape</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/robotSum/ArmBase.png" alt="Arm Base Servo Mount Design in OnShape" loading="lazy">
+                            <figcaption>4. Arm Base Servo Mount Design in OnShape</figcaption>
+                        </figure>
+                        <figure class="media-item">
+                            <img src="/assets/images/robotSum/magMount.png" alt="Compliant Magnetometer Mount Design in OnShape" loading="lazy">
+                            <figcaption>5. Compliant Magnetometer Mount Design in OnShape</figcaption>
+                        </figure>
+                        <figure class="media-item">
                             <img src="/assets/images/robotSum/servoPower.jpg" alt="Servo power diagram" loading="lazy">
-                            <figcaption>3. Servo Power Diagram</figcaption>
+                            <figcaption>6. Servo Power Diagram</figcaption>
                         </figure>
                         <figure class="media-item">
                             <img src="/assets/images/robotSum/magnetometer.png" alt="Magnetometer diagram" loading="lazy">
-                            <figcaption>4. Magnetometer Functional Overview</figcaption>
+                            <figcaption>7. Magnetometer Functional Overview</figcaption>
                         </figure>
                         <figure class="media-item">
                             <img src="/assets/images/robotSum/PetRescDump.jpeg" alt="Robot collecting pet" loading="lazy">
-                            <figcaption>5. Robot Collecting Pet</figcaption>
+                            <figcaption>8. Robot Collecting Pet</figcaption>
                         </figure>
                         <figure class="media-item">
                             <img src="/assets/images/robotSum/PetRescSide2.jpeg" alt="Side view of robot" loading="lazy">
-                            <figcaption>6. Side View</figcaption>
+                            <figcaption>9. Side View</figcaption>
                         </figure>
                     </div>
 
                     <div class="scroller-dots">
                         <span class="dot active"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
+                        <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
                         <span class="dot"></span>
@@ -98,21 +113,70 @@
                         <li>I2C Protocol</li>
                         <li>UART Protocol</li>
                     </ul>
-                    <p class="project-description">
-                        As part of a team of four, I designed, built, and competed with an autonomous robot capable
-                        of seeking out and rescuing small stuffed animals (“pets”) from an obstacle-filled environment.
-                        Our robot placed 2nd out of 15 teams in the final course competition.<br><br>
+                    <p class="project-summary">
+                        As part of a team of four, I designed, built, and competed with an <b>autonomous robot</b> capable
+                        of seeking out and rescuing small stuffed animals ('pets') from an obstacle-filled environment.
+                        Our robot placed 2nd of 15 teams in the final course competition.<br><br>
 
                         We integrated a range of hardware and control systems:<br>
-                        - LiDAR for initial target detection and navigation support<br>
-                        - Infrared reflectance sensor array in a PID feedback loop for line-following navigation<br>
-                        - Dual triple-axis magnetometers to guide the robotic claw toward magnetic targets<br>
-                        - ESP32 microcontrollers, servos, DC motors, and other fundamental drive and control components<br>
-                        - I2C and UART Protocols for sensor-microcontroller and inter-microcontroller communication respectively<br><br>
+                        - <b>LiDAR</b> for initial target detection and navigation support<br>
+                        - <b>Infrared Reflectance Sensor</b> array in a PID feedback loop for line-following navigation<br>
+                        - Dual <b>Triple-Axis LIS3MDL Magnetometers</b> to guide the robotic claw toward magnetic targets<br>
+                        - <b>ESP32 Microcontrollers</b> for sensor data processing, control of the robotic arm and claw, and drive control.<br>
+                        - <b>I2C</b> and <b>UART</b> Protocols for sensor-microcontroller and inter-microcontroller communication respectively<br>
+                        - Servos, DC motors, and other fundamental drive and control components<br><br>
 
-                        The robot was powered by three lithium-polymer batteries, and its chassis, storage bay, and 
-                        arm were built from laser-cut hardboard and 3D-printed PLA components designed in OnShape.
+                        The robot was powered by three Lithium-polymer (LiPo) batteries, and its chassis, storage bay, and 
+                        arm were built from laser-cut hardboard and 3D-printed PLA components designed in <b>OnShape</b>.
                     </p>
+                    <p class="project-hint expand-hint"><i class="fa-solid fa-chevron-down"></i> Click to expand for details</p>
+                    <div class="project-details">
+                    <p class="project-description">
+                        <b>Servo Power & Control Circuit</b> (see figure 6)<br>
+                        PWM signals were sent from the ESP32 Pet Acquisition Controller (PAC) to the servo motors through Optocoupler ICs to isolate the 
+                        ESP32 from the noisy power servo power circuitry. The five servo motors were powered by a LiPo battery through three 6V buck converters;
+                        because the buck converters were current-limited, the two high-load servo motors at the base of the arm were each fed by their own buck
+                        converter while the other three servo motors were all served by the same buck converter. The PAC ESP32 was powered by a LiPo battery
+                        reserved for lower power control and sensing applications.<br><br>
+
+                        <b>Claw Design</b><br>
+                        A teammate and I prototyped the claw and arm assembly; the components I owned were the claw/claw servo mount (figure 3),
+                        the claw itself, and the magnetometer mount, while I shared ownership of the arm base servo enclosure (figure 4). Using
+                        OnShape and a 3D printer, I iterated through several designs of the claw, claw and servo mount, and magnetometer mount.
+                        For quicker print times and less material usage, I initially used a smooth, flat, gripping surface with ridges only on the
+                        tip of the claw, but it consistenly failed to grip the pets even with significant servo torque. I then acheived consistent
+                        gripping performance even with poor overall contact area by adding dull, shallow, spikes to the gripping surface of the claw.
+                        I also transformed the shape from a flat gripping surface to a concave gripping surface to better conform to the shape of
+                        the pets (see figure 3).<br><br>
+
+                        <b>Magnetometer Mount Design</b><br>
+                        The mount was designed to hold the magnetometer in a consistent position relative to the claw when the system
+                        was seeking out the magnetic target. To simplify the signal processing associated with the magnetic flux density measurement,
+                        I designed the mount to hold the magnetometer such that the flux density vector would be aligned with the magnetometer's z-axis
+                        when the claw was directly above the magnetic target. This simplification in signal interpretation introduced collision between
+                        the mount and the pet when the claw grasped the pet, which led to brittle material failure at the base of the mount. I 
+                        resolved this by designing compliance into the mount, allowing the mount to yield to the pet when being grasped while returning
+                        the magnetometer to its original position using a spring once the pet was released, ready to seek out the next magnetic target.
+                        This compliant mechanism can be seen in the first video in the media scroller and in figure 5.<br><br>
+
+                        <b>Pet Acquisition Control</b><br>
+                        Once a pet was detected near the robot and the robot was positioned close by (controls for this process was owned by a navigation
+                        controller), command of the robot was handed over to the PAC, which I owned, and the navigation
+                        controller would serve main drive motor commands requested by the PAC.<br><br>
+
+                        Magnetic flux density vectors were sensed by an <a href="https://www.adafruit.com/product/4479">Adafruit LIS3MDL triple-axis
+                        magnetometer</a> and sent to my controller via I2C. The sign of the readings in the x and y axes were used to determine whether
+                        the robot needed to drive forward/backward or pivot the arm cw/ccw. The squared magnitude of the magnetic flux density vector
+                        was used to determine if the claw was close enough to the magnetic target to attempt a grasp. If the threshold squared magnitude
+                        was not met before a timeout, the PAC would attempt a grasp anyway before moving on to the next pet. This approach was taken due
+                        to the 2 minute time limit on the run; we did not want to dwell on a single pet for too long and risk not being able to collect
+                        others for the sake of the one.<br><br>
+
+                        Once a pet was grasped, a 'dump' control sequence would deposit the pet in a box on the back of the robot and control would be
+                        handed back to the main navigation controller.
+                    </p>
+                    <p class="project-hint collapse-hint"><i class="fa-solid fa-chevron-up"></i> Click to collapse</p>
+                    </div>
                 </div>
             </section>
             <!-- BASS GUITAR COMPANION -->
@@ -178,11 +242,14 @@
                         <li>Prototyping</li>
                         <li>I2C Protocol</li>
                     </ul>
-                    <p class="project-description">
-                        I am designing a companion system to my bass guitar that will allow me to control basic DAW functions remotely and track playing metrics.
-                        The primary goals of this project are to learn power systems design for consumer-safe electronics and process noisy AC signals for
-                        coherant interpretation.<br><br>
-                        
+                    <p class="project-summary">
+                        I am designing a companion system centered around an <b>ESP32 microcontroller</b> for my bass guitar that will allow me to control
+                        basic DAW (Ableton Live) functions remotely and to track playing metrics. I am focusing on <b>power systems design</b> for consumer-safe
+                        electronics, noisy <b>AC signal processing</b> for coherant interpretation (for a tuner), and <b>PCB design</b>.
+                    </p>
+                    <p class="project-hint expand-hint"><i class="fa-solid fa-chevron-down"></i> Click to expand for details</p>
+                    <div class="project-details">
+                    <p class="project-description">                        
                         <b>Power System Design</b><br>
                         Initial inspiration for load sharing system from <a href="https://ww1.microchip.com/downloads/en/AppNotes/01149a.pdf">this document</a>
                         by Brian Chu at Microchip Technology Inc. I replaced the function of the Schottky diode (D1) with the LM66200 ORing Controller
@@ -215,6 +282,8 @@
                         
                         PCB design, enclosure design, and assembly will follow once the schematic is complete and tested through simulation.
                     </p>
+                    <p class="project-hint collapse-hint"><i class="fa-solid fa-chevron-up"></i> Click to collapse</p>
+                    </div>
                 </div>
             </section>
             <!-- ROBOTICS SIMULATOIN -->
@@ -273,6 +342,16 @@
                         <li>Drone Control</li>
                         <li>Version Control</li>
                     </ul>
+                    <p class="project-summary">
+                        I created a two-drone team to <b>navigate a Gazebo-simulated environment</b> to collect data from signs.
+                        <b>ROS1</b> controller nodes were implemented in <b>Python</b> and communicated via rostopics. For high-frequency
+                        inter-drone communication I created a custom lightweight message type (see drone message repository). Controllers
+                        and stabilizers would send movement demands to a command bridge node which would apply all requested forces to the
+                        drone. This was to isolate ownership of force application to a single node and reduce the number of service calls to
+                        Gazebo's costly ApplyBodyWrench service.
+                    </p>
+                    <p class="project-hint expand-hint"><i class="fa-solid fa-chevron-down"></i> Click to expand for details</p>
+                    <div class="project-details">
                     <a href="https://github.com/nlodder/enph353-drone-controllers" target="_blank" class="social-link">
                         <i class="fa-brands fa-github"></i>
                         <span>drone controllers</span>
@@ -290,29 +369,26 @@
                         <span>drone message</span>
                     </a>
                     <p class="project-description">
-                        Created two-drone team to navigate simulated environment to collect data from signs in ROS/Gazebo.
-                        <br><br>
-                        Controller nodes were implemented in Python and communicated via rostopics. For high-frequency inter-drone communication
-                        I created a custom lightweight message type (see drone message repository). Controllers and stabilizers would
-                        send movement demands to a command bridge node which would apply all requested forces to the drone. This was to
-                        isolate ownership of force application to a single node and reduce the number of service calls to Gazebo's 
-                        costly ApplyBodyWrench service.
-                        <br><br>
+                        <b>Drone Planar Stabilization</b><br>
                         Roll and pitch stabilization was handled by a node that took inputs from an IMU link on the drone body and published
                         required correction velocities (to be read by the command bridge) after passing the roll, pitch and angular velocity
                         values through a PID function.
                         <br><br>
-                        The front camera feed was processed with OpenCV for navigation. The difference of the horizontal centroid of blue signs
+                        <b>Drone Navigation</b><br>
+                        The front camera feed was processed with <b>OpenCV</b> for navigation. The difference of the horizontal centroid of blue signs
                         from the centre of the frame was used as the error for left/right strafing and yaw PID controllers. For forward/backward
                         movement I used the relative height of the sign in the frame, pushing the drone back if the sign was too large in frame,
                         and forward if it was too small. This error was also passed through a PID controller to determine the forward/backward
                         velocity demand.
                         <br><br>
+                        <b>Drone Design</b><br>
                         The base drone design was created in OnShape and converted to a URDF file through the 
                         <a href="https://onshape-to-robot.readthedocs.io/en/latest/">onshape-to-robot plugin</a>. I wrote a python script to convert
-                        this .urdf file to a .xacro file for cleanliness and better handling of repeat parts. This file was then modified per developed
-                        needs in controller development (adding sensors, modifying drone colors etc.).
+                        this <code>.urdf</code> file to a <code>.xacro</code> file for cleanliness and better handling of repeat parts. This file was
+                        then modified per developed needs in controller development (adding sensors, modifying drone colors, adding ArUco markers etc.).
                     </p>
+                    <p class="project-hint collapse-hint"><i class="fa-solid fa-chevron-up"></i> Click to collapse</p>
+                    </div>
                 </div>
             </section>
             <!-- DESIGN TEAM PROJECT -->
@@ -367,17 +443,25 @@
                         <li>Sensor Characterization</li>
                         <li>Prototyping</li>
                     </ul>
-                    <p class="project-description">
+                    <p class="project-summary">
                         As part of the Electrical Sub-team at UBC BEST-Enable I programmed Raspberry Pi
                         to stream video from a Picam to a small monitor with a proximity-indicator 
                         overlay to provide client in electric wheelchair with visibility and proximity
                         feedback when reversing in tight environments.<br><br>
+                        
                         This was my first introduction to working on a linux system and debugging 
                         in the command line where our primary struggle was interfacing with the 
                         external display to create a clean and effective stream for our client. We
                         overcame this by looking through the openCV documentation to find potential
-                        solutions, landing on the Python OpenCV <a href="https://docs.opencv.org/4.x/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b">namedWindow()</a> method.
+                        solutions, landing on the Python OpenCV
+                        <a href="https://docs.opencv.org/4.x/d7/dfc/group__highgui.html#ga5afdf8410934fd099df85c75b2e0888b">namedWindow()</a>
+                        method.
                     </p>
+                    <!-- <p class="project-hint expand-hint"><i class="fa-solid fa-chevron-down"></i> Click to expand for details</p> -->
+                    <div class="project-details">
+                    <p class="project-description"></p>
+                    <!-- <p class="project-hint collapse-hint"><i class="fa-solid fa-chevron-up"></i> Click to collapse</p> -->
+                    </div>
                 </div>
             </section>
             <!-- VEXBOT PROJECT-->
@@ -427,13 +511,17 @@
                         <li>Sensor Characterization</li>
                         <li>Prototyping</li>
                     </ul>
-                    <p class="project-description">
+                    <p class="project-summary">
                         I designed and built a Vexbot that uses vision sensors' color recognition cability to identify
-                        and
-                        collect coloured balls. The robot would then use the same sensor to scan for and
+                        and collect coloured balls. The robot would then use the same sensor to scan for and
                         identify a delivery location, and would use a distance sensor to detect when
                         it was close enough to drop off the balls.
                     </p>
+                    <!-- <p class="project-hint expand-hint"><i class="fa-solid fa-chevron-down"></i> Click to expand for details</p> -->
+                    <div class="project-details">
+                    <p class="project-description"></p>
+                    <!-- <p class="project-hint collapse-hint"><i class="fa-solid fa-chevron-up"></i> Click to collapse</p> -->
+                    </div>
                 </div>
             </section>
             <!-- OBSIDIAN PLUGIN -->
@@ -486,11 +574,7 @@
                         <li>Inter-Process Communication</li>
                         <li>Resource Management</li>
                     </ul>
-                    <a href="https://github.com/nlodder/local-python-obsidian" target="_blank" class="social-link">
-                        <i class="fa-brands fa-github"></i>
-                        <span>github repository</span>
-                    </a>
-                    <p class="project-description">
+                    <p class="project-summary">
                         I developed a custom Obsidian plugin that integrates a live Python
                         execution environment directly into Markdown notes. Designed to replace
                         static hand-drawn plots with interactive data visualizations, the plugin
@@ -498,17 +582,29 @@
                         Python/Plotly ecosystem. It features a custom CSS-to-Python theme engine
                         that dynamically injects Obsidian's UI variables into the rendering pipeline,
                         ensuring that plots automatically adapt their color palettes
-                        during theme shifts (see photos) for a native user experience.<br><br>
+                        during theme shifts (see photos) for a native user experience.
+                    </p>
+                    <p class="project-hint expand-hint"><i class="fa-solid fa-chevron-down"></i> Click to expand for details</p>
+                    <div class="project-details">
+                    <a href="https://github.com/nlodder/local-python-obsidian" target="_blank" class="social-link">
+                        <i class="fa-brands fa-github"></i>
+                        <span>github repository</span>
+                    </a>
+                    <p class="project-description">
                         I wrote this plugin to improve my knowledge management environment and engineering
                         and learning workflows. I plan to create more quality of life features such
                         as quick-plot shortcuts and other UI shortcuts (slider, variable manipulators etc.)
                         as time permits.<br><br>
+
                         NOTE: There is currently an issue where the plugin does not render regular python code
-                        blocks properly, only rendering when the tage is 'python local-py'. I am actively working
+                        blocks properly, only rendering when the tag is <code>python local-py</code>. I am actively working
                         on resolving this issue.<br><br>
-                        NOTE: Development is on hold while I determine how to protect against recent and anticipated
+
+                        NOTE: Development is on hold while I determine whether/how to protect against recent and anticipated
                         supply chain vulnerabilities in python dependencies.
                     </p>
+                    <p class="project-hint collapse-hint"><i class="fa-solid fa-chevron-up"></i> Click to collapse</p>
+                    </div>
                 </div>
             </section>
         </main>
@@ -905,6 +1001,14 @@
                 });
             });
         })();
+
+        // 4. Project Expand/Collapse Logic
+        document.querySelectorAll('.project-block').forEach((block) => {
+            block.addEventListener('click', (evt) => {
+                if (evt.target.closest('.project-media, a, button')) return;
+                block.classList.toggle('is-expanded');
+            });
+        });
     </script>
 </body>
 

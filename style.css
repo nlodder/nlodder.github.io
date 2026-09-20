@@ -162,6 +162,31 @@ body::-webkit-scrollbar {
     0 0 45px rgba(217, 74, 118, 0.28), 0 0 100px rgba(217, 74, 118, 0.14);
   transform: translateY(-3px);
 }
+.project-block {
+  cursor: pointer;
+}
+.project-details {
+  display: none;
+}
+.project-block.is-expanded .project-details {
+  display: block;
+}
+.project-hint {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin: 6px 0 0 0;
+  font-family: var(--font-main);
+  font-size: 0.72rem;
+  color: var(--slate-muted);
+  letter-spacing: 0.05em;
+}
+.project-block.is-expanded .expand-hint {
+  display: none;
+}
+.collapse-hint {
+  margin-top: 16px;
+}
 .project-info {
   text-align: left; /* Overrides the centered text-align inherited from .landing-container */
 }
@@ -214,7 +239,8 @@ body::-webkit-scrollbar {
   border: none !important;
   padding-right: 15px;
 }
-.project-description {
+.project-description,
+.project-summary {
   max-width: 70ch;
   line-height: 1.6;
   font-family: var(--font-main);
@@ -224,6 +250,7 @@ body::-webkit-scrollbar {
 }
 /* Darkens body copy and captions for legibility once the card background darkens */
 .project-block:hover .project-description,
+.project-block:hover .project-summary,
 .project-block:hover .media-item figcaption {
   color: var(--text-main);
 }
