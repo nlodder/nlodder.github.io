@@ -32,21 +32,36 @@
   --glass-fill-deep: rgba(231, 223, 217, 0.28);
   --glass-border: rgba(255, 255, 255, 0.5);
   --glass-highlight: rgba(255, 255, 255, 0.7);
+
+  /* Faint full-page art behind everything -- tune this to taste */
+  --bg-art-opacity: 0.04;
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  background-color: var(--slate-light); /* Only on html so the art layer can sit above it and below the body */
+}
 html,
 body {
   margin: 0;
   padding: 0;
-  background-color: var(--slate-light);
   color: var(--text-main);
   font-family: var(--font-main);
   min-height: 100vh;
   scrollbar-width: none; /* For Firefox */
+}
+/* Fixed background art, faded over the page color */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: url("./assets/images/home/art-original.png") center top / cover no-repeat;
+  opacity: var(--bg-art-opacity);
+  pointer-events: none;
 }
 /* Locks the page behind the media viewer */
 body.viewer-open {
@@ -61,60 +76,25 @@ body::-webkit-scrollbar {
   min-height: 100vh;
   width: 100%;
 }
-.hero {
-  text-align: center;
-  padding: 40px 20px 10px 20px;
-}
-/* HERO SECTION (heading, bio) */
-.hero h1 {
-  font-family: var(--font-main);
-  font-size: 3rem;
-  color: var(--slate-dark);
-}
-.hero p {
-  color: var(--accent-blue);
-  font-size: 1.2rem;
+
+/* BREADCRUMB -- location on sub-pages, e.g. home / projects */
+.breadcrumb {
+  padding: 20px 24px 0 24px;
+  font-size: 0.95rem;
   letter-spacing: 0.05em;
-  max-width: 75%;
-  text-align: left;
-  margin: 0 auto;
+  color: var(--slate-muted);
 }
-/* LANDING SECTION -- profile links, project blocks */
-.landing-container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 10px;
-  width: 100%;
-  text-align: center;
-}
-.menu-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  gap: 40px;
-}
-.menu-list li {
-  margin: 25px 25px;
-}
-.menu-list a {
+.breadcrumb a {
+  color: var(--slate-dark);
   text-decoration: none;
-  font-family: var(--font-main);
-  font-size: 1.5rem;
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: var(--slate-dark);
-  transition: all 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
-  display: inline-block;
+  transition: color 0.3s ease;
 }
-.menu-list a:hover {
+.breadcrumb a:hover {
   color: var(--accent-pink);
-  letter-spacing: 0.1em;
+}
+.breadcrumb-sep {
+  margin: 0 8px;
+  opacity: 0.5;
 }
 .social-link {
   text-decoration: none;
@@ -136,9 +116,132 @@ body::-webkit-scrollbar {
   color: var(--accent-pink);
   scale: 1.05;
 }
+
+footer {
+  padding: 60px 20px;
+  text-align: center;
+  background-color: transparent; /* Or var(--white) if you want it to pop */
+  border-top: 1px solid rgba(66, 59, 55, 0.12); /* Subtle divider line */
+  margin-top: auto; /* Pushes footer to bottom if page is short */
+}
+.footer-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+}
+footer p {
+  font-size: 0.9rem;
+  opacity: 0.6;
+  margin-top: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* HOME -- intro (bio) and page list */
+.home-intro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 40px 20px 10px 20px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+/* HERO SECTION (heading, bio) */
+.hero {
+  text-align: center;
+  max-width: 70ch;
+}
+.hero h1 {
+  font-family: var(--font-main);
+  font-size: 3rem;
+  color: var(--slate-dark);
+  margin: 0.3em 0;
+}
+.hero p {
+  color: var(--accent-blue);
+  font-size: 1.2rem;
+  letter-spacing: 0.05em;
+  text-align: left;
+  margin: 0 auto;
+}
+.home-links {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 28px;
+  padding: 40px 20px;
+}
+/* One row per page on the site */
+.page-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+.page-list a {
+  font-size: 1.5rem;
+  letter-spacing: 0.05em;
+  color: var(--slate-dark);
+  text-decoration: none;
+  transition: color 0.3s ease, letter-spacing 0.4s ease;
+}
+.page-list a:hover {
+  color: var(--accent-pink);
+  letter-spacing: 0.1em;
+}
+.home-divider {
+  width: 60px;
+  border: 0;
+  border-top: 1px solid var(--border-subtle);
+  margin: 0;
+}
+.social-row {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+}
+/* Label sized to match the icon so the pair reads as one unit */
+.social-row .social-link {
+  font-size: 1.3rem;
+  letter-spacing: 0.05em;
+  gap: 12px;
+}
+.social-row .social-link i {
+  font-size: 1.5rem;
+}
+@media (min-width: 768px) {
+  .home-intro {
+    padding-top: 60px;
+  }
+}
+
+/* PROJECTS PAGE -- project blocks and media scrollers */
+/* PAGE HEADER + LIST */
+.site-header {
+  text-align: center;
+  padding: 10px 20px;
+}
+.site-header h1 {
+  font-family: var(--font-main);
+  font-size: 3rem;
+  color: var(--slate-dark);
+  margin: 0.67em 0;
+}
+.project-list {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  width: 100%;
+  text-align: center;
+}
 /* PROJECT BLOCKS */
 .project-block {
-  width: 100%;
+  width: 90%;
   max-width: 1400px;
   display: flex;
   flex-direction: column;
@@ -162,7 +265,7 @@ body::-webkit-scrollbar {
     0 0 45px rgba(217, 74, 118, 0.28), 0 0 100px rgba(217, 74, 118, 0.14);
   transform: translateY(-3px);
 }
-.project-block {
+.project-block.has-details {
   cursor: pointer;
 }
 .project-details {
@@ -188,7 +291,7 @@ body::-webkit-scrollbar {
   margin-top: 16px;
 }
 .project-info {
-  text-align: left; /* Overrides the centered text-align inherited from .landing-container */
+  text-align: left; /* Overrides the centered text-align inherited from .project-list */
 }
 .project-info h2 {
   font-family: var(--font-main);
@@ -396,25 +499,6 @@ body::-webkit-scrollbar {
     font-size: 1.5rem;
     color: var(--slate-dark);
   }
-}
-footer {
-  padding: 60px 20px;
-  text-align: center;
-  background-color: transparent; /* Or var(--white) if you want it to pop */
-  border-top: 1px solid rgba(66, 59, 55, 0.12); /* Subtle divider line */
-  margin-top: auto; /* Pushes footer to bottom if page is short */
-}
-.footer-content {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 15px;
-}
-footer p {
-  font-size: 0.9rem;
-  opacity: 0.6;
-  margin-top: 10px;
-  letter-spacing: 0.05em;
 }
 
 /* MEDIA VIEWER -- a glass panel that sits on top of the page */
@@ -652,3 +736,4 @@ footer p {
     transition: none;
   }
 }
+
