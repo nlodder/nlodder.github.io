@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>Nate's Portfolio | Projects</title>
+    <link rel="icon" type="image/svg+xml"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22 font-family=%22Optima, Iowan Old Style, Seravek, sans-serif%22 fill=%22%23d94a76%22>N</text></svg>">
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+
+<body>
+
+    <div class="page-wrapper">
+        <!-- BREADCRUMB: keep in sync with the page's place in the site -->
+        <nav class="breadcrumb"><a href="./index.html">home</a><span class="breadcrumb-sep">/</span>projects</nav>
+        <header class="site-header">
+            <h1>Projects</h1>
+        </header>
+        <!-- Project blocks are rendered from /data/projects.js by /js/projects.js -->
+        <main class="project-list" id="project-list"></main>
+        <footer>
+            <p>2026 | Nathan Lodder</p>
+        </footer>
+    </div>
+
+    <!-- MEDIA VIEWER -- glass panel for expanded media -->
+    <div class="media-viewer" id="media-viewer" role="dialog" aria-modal="true" aria-label="Media viewer"
+        aria-hidden="true">
+        <div class="viewer-scrim"></div>
+        <div class="viewer-panel">
+            <div class="viewer-bar">
+                <span class="viewer-title"></span>
+                <div class="viewer-actions">
+                    <span class="viewer-counter"></span>
+                    <button type="button" class="viewer-btn viewer-close" aria-label="Close media viewer">
+                        <i class="fa-solid fa-xmark"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="viewer-stage">
+                <button type="button" class="viewer-btn viewer-nav prev" aria-label="Previous media">
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="viewer-canvas"></div>
+                <button type="button" class="viewer-btn viewer-nav next" aria-label="Next media">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+            </div>
+            <div class="viewer-foot">
+                <p class="viewer-caption"></p>
+                <div class="viewer-dots"></div>
+                <p class="viewer-hint">Scroll or pinch to zoom · drag to pan · double-click to reset</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="./data/projects.js"></script>
+    <script src="./js/media-viewer.js"></script>
+    <script src="./js/projects.js"></script>
+</body>
+
+</html>
