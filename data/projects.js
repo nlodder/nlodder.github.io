@@ -1,15 +1,69 @@
 // All projects shown on projects.html, in display order.
 // Add a project: copy a block below. Remove: delete its block. Reorder: move its block.
 //
-//   title    string
-//   tools    string[]                    (optional)
-//   skills   string[]                    (optional)
-//   media    images: { src, caption, alt? }      -- captions are auto-numbered
-//            videos: { type: 'video', src, poster?, caption, mime? }
-//   summary  HTML string, always visible
-//   details  HTML string, shown on click-to-expand   (optional)
-//   links    [{ label, href, icon? }] inside details; icon defaults to GitHub (optional)
+//   title      string
+//   tools      string[]                    (optional)
+//   skills     string[]                    (optional)
+//   media      images: { src, caption, alt? }      -- captions are auto-numbered
+//              videos: { type: 'video', src, poster?, caption, mime? }
+//   summary    HTML string, always visible
+//   details    HTML string, shown on click-to-expand   (optional)
+//   links      [{ label, href, icon? }] inside details; icon defaults to GitHub (optional)
 const projects = [
+    {
+        title: 'Bass Guitar Companion',
+        tools: ['EasyEDA', 'ESP32'],
+        skills: ['Power Systems Design', 'Circuit Design', 'Prototyping', 'I2C Protocol'],
+        media: [
+            { src: '/assets/images/bassGuitar/fullSys.png', alt: 'Full system schematic', caption: 'Full System Schematic' },
+            { src: '/assets/images/bassGuitar/charging.png', alt: 'USB-C-LiPo charging schematic', caption: 'USB-C-LiPo Charging Schematic' },
+            { src: '/assets/images/bassGuitar/loadSharing.png', alt: 'Load sharing & power path management schematic', caption: 'Load Sharing & Power Path Management Schematic' },
+            { src: '/assets/images/bassGuitar/system.png', alt: 'Control system schematic', caption: 'Control System Schematic' },
+            { src: '/assets/images/bassGuitar/bodeAttempt1.png', alt: 'Bass Output Processing Circuit Bode Plot', caption: 'Bass Output Processing Circuit Bode Plot' },
+            { src: '/assets/images/bassGuitar/bodeAttempt33.png', alt: '4th-Order vs 2nd-Order Active Bandpass Filter Comparison', caption: '4th-Order vs 2nd-Order Active Bandpass Filter Comparison' },
+            { src: '/assets/images/bassGuitar/impdnc_mismatch.png', alt: 'Attenuator -> DC Offset Segment Impedance Mismatch Issue', caption: 'Attenuator -> DC Offset Segment Impedance Mismatch Issue (top circuit has DC Offset segment, bottom does not)' },
+            { src: '/assets/images/bassGuitar/buffer_fix.png', alt: 'Buffer to Resolve Impedance Mismatch Between Segments', caption: 'Buffer to Resolve Impedance Mismatch Between Segments (top circuit has buffer, bottom does not)' },
+            { src: '/assets/images/bassGuitar/signalCondCircuit.png', alt: 'Signal Conditioning Circuit for Input to ESP32 SAR ADC', caption: 'Signal Conditioning Circuit for Input to ESP32 SAR ADC in LTSpice' },
+        ],
+        summary: `
+            I am designing a companion system centered around an <b>ESP32 microcontroller</b> for my bass guitar that will allow me to control
+            basic DAW (Ableton Live) functions remotely and to track playing metrics. I am focusing on <b>power systems design</b> for consumer-safe
+            electronics, noisy <b>AC signal processing</b> for coherant interpretation (for a tuner), and <b>PCB design</b>.
+        `,
+        details: `
+            <b>Power System Design</b><br>
+            Initial inspiration for load sharing system from <a href="https://ww1.microchip.com/downloads/en/AppNotes/01149a.pdf">this document</a>
+            by Brian Chu at Microchip Technology Inc. I replaced the function of the Schottky diode (D1) with the LM66200 ORing Controller
+            to reduce power loss and provide a stable voltage rail to the ESP32 microcontroller. I also replaced the P-MOSFET (Q1) used to isolate the
+            battery in Brian Chu's design with an N-MOSFET used to enable the boost converter tasked with boosting the battery voltage to a stable 5V.
+            With this boost converter disabled, which occurs during charging when the usb-c cable is connected, the battery is isolated from the load
+            with redundant back-current protection from the LM66200 ORing controller and the TPS61022 boost converter.<br><br>
+
+            <i>Note: I will revisit the design of this system to power the tuner portion of this project, which I chose to pursue after initially desiging
+            this power system.</i><br><br>
+
+            <b>Tuner Design</b><br>
+            To permit tuning the bass down to a B0 (30.87Hz), the tuner circuit will be designed for frequencies from 25Hz -> 135Hz where the
+            frequency range to which the strings will be tuned is from B0 (30.87Hz) to G2 (98.00Hz). To process the raw bass output for input
+            to the ESP32's SAR ADC, I will put it through a band-pass filter to remove noise, attenuate it, and apply a DC offset to ensure
+            the signal is within the optimal voltage range for the SAR ADC (100mV - 900mV). To resolve excessive signal attenuation at the boundaries
+            of the 25Hz - 135Hz frequency band, I am designing for maximum 5% attenuation at those edge frequencies rather than treating them
+            as the filter's cutoff frequencies (with 29.3% attenuation).<br><br>
+
+            I've designed a 4th-order active RC-OpAmp bandpass filter to improve the selectivity of the filter (when compared to passive RC
+            or RLC bandpass filters) with fewer components to resolve the gentle roll-off associated with passive RC/RLC bandpass filters.
+            See figure 6 for a comparison between a 2nd-order 4th-order active bandpass filter, where we see increased selectivity in the
+            4th-order filter with a sharper rolloff.<br><br>
+
+            <b>Current Activity</b>
+            I am currently running SPICE simulations to evaluate this signal processing circuit. A buffer was added between the attenuator and DC Offset
+            segments to prevent the 3.3V source from raising the output voltage of the attenuator portion, which would then be boosted by another 500mV
+            (see figures 7 & 8). As seen in figure 8, I need to resolve behaviour in which there is a sharp voltage spike at startup, as this could damage
+            the ESP32's SAR ADC.<br><br>
+
+            PCB design, enclosure design, and assembly will follow once the schematic is complete and tested through simulation.
+        `,
+    },
     {
         title: 'Pet Rescue Robot',
         tools: ['C++', 'ESP32', 'LiDar Sensors', 'Magnetometer Sensors', 'Servo Motors', 'OnShape'],
@@ -84,60 +138,6 @@ const projects = [
 
             Once a pet was grasped, a 'dump' control sequence would deposit the pet in a box on the back of the robot and control would be
             handed back to the main navigation controller.
-        `,
-    },
-    {
-        title: 'Bass Guitar Companion',
-        tools: ['EasyEDA', 'ESP32'],
-        skills: ['Power Systems Design', 'Circuit Design', 'Prototyping', 'I2C Protocol'],
-        media: [
-            { src: '/assets/images/bassGuitar/fullSys.png', alt: 'Full system schematic', caption: 'Full System Schematic' },
-            { src: '/assets/images/bassGuitar/charging.png', alt: 'USB-C-LiPo charging schematic', caption: 'USB-C-LiPo Charging Schematic' },
-            { src: '/assets/images/bassGuitar/loadSharing.png', alt: 'Load sharing & power path management schematic', caption: 'Load Sharing & Power Path Management Schematic' },
-            { src: '/assets/images/bassGuitar/system.png', alt: 'Control system schematic', caption: 'Control System Schematic' },
-            { src: '/assets/images/bassGuitar/bodeAttempt1.png', alt: 'Bass Output Processing Circuit Bode Plot', caption: 'Bass Output Processing Circuit Bode Plot' },
-            { src: '/assets/images/bassGuitar/bodeAttempt33.png', alt: '4th-Order vs 2nd-Order Active Bandpass Filter Comparison', caption: '4th-Order vs 2nd-Order Active Bandpass Filter Comparison' },
-            { src: '/assets/images/bassGuitar/impdnc_mismatch.png', alt: 'Attenuator -> DC Offset Segment Impedance Mismatch Issue', caption: 'Attenuator -> DC Offset Segment Impedance Mismatch Issue (top circuit has DC Offset segment, bottom does not)' },
-            { src: '/assets/images/bassGuitar/buffer_fix.png', alt: 'Buffer to Resolve Impedance Mismatch Between Segments', caption: 'Buffer to Resolve Impedance Mismatch Between Segments (top circuit has buffer, bottom does not)' },
-            { src: '/assets/images/bassGuitar/signalCondCircuit.png', alt: 'Signal Conditioning Circuit for Input to ESP32 SAR ADC', caption: 'Signal Conditioning Circuit for Input to ESP32 SAR ADC in LTSpice' },
-        ],
-        summary: `
-            I am designing a companion system centered around an <b>ESP32 microcontroller</b> for my bass guitar that will allow me to control
-            basic DAW (Ableton Live) functions remotely and to track playing metrics. I am focusing on <b>power systems design</b> for consumer-safe
-            electronics, noisy <b>AC signal processing</b> for coherant interpretation (for a tuner), and <b>PCB design</b>.
-        `,
-        details: `
-            <b>Power System Design</b><br>
-            Initial inspiration for load sharing system from <a href="https://ww1.microchip.com/downloads/en/AppNotes/01149a.pdf">this document</a>
-            by Brian Chu at Microchip Technology Inc. I replaced the function of the Schottky diode (D1) with the LM66200 ORing Controller
-            to reduce power loss and provide a stable voltage rail to the ESP32 microcontroller. I also replaced the P-MOSFET (Q1) used to isolate the
-            battery in Brian Chu's design with an N-MOSFET used to enable the boost converter tasked with boosting the battery voltage to a stable 5V.
-            With this boost converter disabled, which occurs during charging when the usb-c cable is connected, the battery is isolated from the load
-            with redundant back-current protection from the LM66200 ORing controller and the TPS61022 boost converter.<br><br>
-
-            <i>Note: I will revisit the design of this system to power the tuner portion of this project, which I chose to pursue after initially desiging
-            this power system.</i><br><br>
-
-            <b>Tuner Design</b><br>
-            To permit tuning the bass down to a B0 (30.87Hz), the tuner circuit will be designed for frequencies from 25Hz -> 135Hz where the
-            frequency range to which the strings will be tuned is from B0 (30.87Hz) to G2 (98.00Hz). To process the raw bass output for input
-            to the ESP32's SAR ADC, I will put it through a band-pass filter to remove noise, attenuate it, and apply a DC offset to ensure
-            the signal is within the optimal voltage range for the SAR ADC (100mV - 900mV). To resolve excessive signal attenuation at the boundaries
-            of the 25Hz - 135Hz frequency band, I am designing for maximum 5% attenuation at those edge frequencies rather than treating them
-            as the filter's cutoff frequencies (with 29.3% attenuation).<br><br>
-
-            I've designed a 4th-order active RC-OpAmp bandpass filter to improve the selectivity of the filter (when compared to passive RC
-            or RLC bandpass filters) with fewer components to resolve the gentle roll-off associated with passive RC/RLC bandpass filters.
-            See figure 6 for a comparison between a 2nd-order 4th-order active bandpass filter, where we see increased selectivity in the
-            4th-order filter with a sharper rolloff.<br><br>
-
-            <b>Current Activity</b>
-            I am currently running SPICE simulations to evaluate this signal processing circuit. A buffer was added between the attenuator and DC Offset
-            segments to prevent the 3.3V source from raising the output voltage of the attenuator portion, which would then be boosted by another 500mV
-            (see figures 7 & 8). As seen in figure 8, I need to resolve behaviour in which there is a sharp voltage spike at startup, as this could damage
-            the ESP32's SAR ADC.<br><br>
-
-            PCB design, enclosure design, and assembly will follow once the schematic is complete and tested through simulation.
         `,
     },
     {
