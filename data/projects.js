@@ -40,9 +40,6 @@ const projects = [
             With this boost converter disabled, which occurs during charging when the usb-c cable is connected, the battery is isolated from the load
             with redundant back-current protection from the LM66200 ORing controller and the TPS61022 boost converter.<br><br>
 
-            <i>Note: I will revisit the design of this system to power the tuner portion of this project, which I chose to pursue after initially desiging
-            this power system.</i><br><br>
-
             <b>Tuner Design</b><br>
             To permit tuning the bass down to a B0 (30.87Hz), the tuner circuit will be designed for frequencies from 25Hz -> 135Hz where the
             frequency range to which the strings will be tuned is from B0 (30.87Hz) to G2 (98.00Hz). To process the raw bass output for input
