@@ -12,18 +12,19 @@
 const projects = [
     {
         title: 'Bass Guitar Companion',
-        tools: ['EasyEDA', 'ESP32'],
-        skills: ['Power Systems Design', 'Circuit Design', 'Prototyping', 'I2C Protocol'],
+        tools: ['LTSpice', 'KiCad','EasyEDA', 'ESP32'],
+        skills: ['Power Systems Design', 'Circuit Design', 'SPICE Simulation', 'Prototyping'],
         media: [
             { src: '/assets/images/bassGuitar/fullSys.png', alt: 'Full system schematic', caption: 'Full System Schematic' },
+            { src: '/assets/images/bassGuitar/signalCondCircuit2nd.png', alt: '2nd-Order Signal Conditioning Circuit Schematic for Input to ESP32 SAR ADC', caption: 'Signal Conditioning Circuit Schematic for Input to ESP32 SAR ADC' },
             { src: '/assets/images/bassGuitar/charging.png', alt: 'USB-C-LiPo charging schematic', caption: 'USB-C-LiPo Charging Schematic' },
             { src: '/assets/images/bassGuitar/loadSharing.png', alt: 'Load sharing & power path management schematic', caption: 'Load Sharing & Power Path Management Schematic' },
             { src: '/assets/images/bassGuitar/system.png', alt: 'Control system schematic', caption: 'Control System Schematic' },
-            { src: '/assets/images/bassGuitar/bodeAttempt1.png', alt: 'Bass Output Processing Circuit Bode Plot', caption: 'Bass Output Processing Circuit Bode Plot' },
             { src: '/assets/images/bassGuitar/bodeAttempt33.png', alt: '4th-Order vs 2nd-Order Active Bandpass Filter Comparison', caption: '4th-Order vs 2nd-Order Active Bandpass Filter Comparison' },
             { src: '/assets/images/bassGuitar/impdnc_mismatch.png', alt: 'Attenuator -> DC Offset Segment Impedance Mismatch Issue', caption: 'Attenuator -> DC Offset Segment Impedance Mismatch Issue (top circuit has DC Offset segment, bottom does not)' },
             { src: '/assets/images/bassGuitar/buffer_fix.png', alt: 'Buffer to Resolve Impedance Mismatch Between Segments', caption: 'Buffer to Resolve Impedance Mismatch Between Segments (top circuit has buffer, bottom does not)' },
-            { src: '/assets/images/bassGuitar/signalCondCircuit.png', alt: 'Signal Conditioning Circuit for Input to ESP32 SAR ADC', caption: 'Signal Conditioning Circuit for Input to ESP32 SAR ADC in LTSpice' },
+            { src: '/assets/images/bassGuitar/signalCondCircuit4th.png', alt: '4th-Order Signal Conditioning Circuit Schematic for Input to ESP32 SAR ADC', caption: 'Signal Conditioning Circuit Schematic with 4th-order Filter for Input to ESP32 SAR ADC in LTSpice' },
+            { src: '/assets/images/bassGuitar/ADCInput1VAcrossFreq.png', alt: 'LTSpice Simulation of ESP32 SAR ADC Input with Bass Signal: 1V Amplitude @ 5Hz->500Hz', caption: 'LTSpice Simulation of ESP32 SAR ADC Input with Bass Signal: 1V Amplitude @ 5Hz->500Hz' },
         ],
         summary: `
             I am designing a companion system centered around an <b>ESP32 microcontroller</b> for my bass guitar that will allow me to control
@@ -50,18 +51,18 @@ const projects = [
             of the 25Hz - 135Hz frequency band, I am designing for maximum 5% attenuation at those edge frequencies rather than treating them
             as the filter's cutoff frequencies (with 29.3% attenuation).<br><br>
 
-            I've designed a 4th-order active RC-OpAmp bandpass filter to improve the selectivity of the filter (when compared to passive RC
+            I've designed a 2nd-order active RC-OpAmp bandpass filter to improve the selectivity of the filter (when compared to passive RC
             or RLC bandpass filters) with fewer components to resolve the gentle roll-off associated with passive RC/RLC bandpass filters.
-            See figure 6 for a comparison between a 2nd-order 4th-order active bandpass filter, where we see increased selectivity in the
-            4th-order filter with a sharper rolloff.<br><br>
+            See figure 6 for a comparison between a 2nd-order 4th-order (figure 9) active bandpass filter, where we see increased selectivity in the
+            4th-order filter with a sharper rolloff. A buffer was added between the attenuator and DC Offset segments to prevent the 3.3V source
+            from raising the output voltage of the attenuator portion, which would then be boosted by another 500mV (see figures 7 & 8). I opted to
+            go with the 2nd-order filter to reduce cost seeing as its performance is adequate. See figure 10 for a plot of the signal processing
+            circuit's response across bass input frequencies from 5Hz->500Hz. It performs as desired, providing a 500mV DC offset and attenuating
+            the (1V) signal such that it remains within the optimal voltage range for the SAR ADC (100mV-900mV).<br><br>
 
             <b>Current Activity</b>
-            I am currently running SPICE simulations to evaluate this signal processing circuit. A buffer was added between the attenuator and DC Offset
-            segments to prevent the 3.3V source from raising the output voltage of the attenuator portion, which would then be boosted by another 500mV
-            (see figures 7 & 8). As seen in figure 8, I need to resolve behaviour in which there is a sharp voltage spike at startup, as this could damage
-            the ESP32's SAR ADC.<br><br>
-
-            PCB design, enclosure design, and assembly will follow once the schematic is complete and tested through simulation.
+            With SPICE simulations complete, I am now proceeding to finalize my componenet selection, making swaps where selected components are
+            backlogged or are no longer available. Once complete, I will begin on PCB design.<br><br>
         `,
     },
     {
